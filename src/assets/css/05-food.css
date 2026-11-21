@@ -12,7 +12,7 @@
 .hcard .pill{background:var(--pill);color:var(--pill-ink)}
 .hcard h2 a{color:var(--navy)}
 .hcard__date{color:var(--ink-muted)}
-.brandline__accent{color:#1E7F86}
+.brandline__accent{color:var(--brand)}
 .brandline{border-color:#E4E7EB}
 .potw{background:color-mix(in srgb,var(--pill) 35%,#fff);border-color:color-mix(in srgb,var(--accent) 30%,#fff)}
 .potw__row img{mix-blend-mode:multiply}
@@ -35,3 +35,12 @@
 .pill--label{background:var(--pill);color:var(--pill-ink)}
 @media (max-width:639px){.brand__name{font-size:clamp(20px,6.2vw,34px)}}
 .cat-card__title{font-weight:900;letter-spacing:-.02em;text-transform:none;font-size:clamp(24px,3vw,32px)}
+/* COR DA MARCA = tijolo #A3352B (Lilian, 21/11), no lugar do navy, para o site não ficar igual ao exercisenono.
+   Títulos e texto continuam em navy escuro. Diferente do vermelho do AVOID (#C63A33) de propósito. */
+.brand__name{color:var(--brand)}
+.site-footer{background:var(--brand)}
+.site-footer .site-footer__name{color:#fff}
+.btn--navy{background:var(--brand);border-color:var(--brand)}
+.pill--plain{background:var(--brand)}
+.num--sm{background:var(--brand);color:#fff}
+.social a,.social span{color:var(--brand)}
