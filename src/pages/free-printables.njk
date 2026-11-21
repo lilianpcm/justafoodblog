@@ -1,0 +1,17 @@
+---
+permalink: /free-printables/
+layout: layouts/page.njk
+crumb: "Free printable"
+title: "[FREE PRINTABLE H1 — 7-Day Food & Symptom Diary]"
+seo_title: "Free Printable Food and Symptom Diary (PDF)"
+description: "Download a free printable 7-day food and symptom diary, plus a blank eat, limit and avoid list to build your own. A4 and US Letter."
+---
+{% import "components.njk" as c %}
+<p>[INTRO — 1-2 sentences: what the diary is for and how to use it]</p>
+<ul>
+  <li><strong>7-Day Food &amp; Symptom Diary:</strong> [WHAT EACH DAY HAS]</li>
+  <li><strong>My Eat / Limit / Avoid List:</strong> [WHAT THE BLANK LIST HAS]</li>
+</ul>
+{% if site.home.free_printable.image %}{{ img(site.home.free_printable.image, "7-Day Food and Symptom Diary printable pages", { widths: [480, 800, 1200], sizes: "(min-width: 760px) 680px, 92vw" }) | safe }}{% endif %}
+{{ c.freebie() }}
+<p>Want the complete list for your diet? See our <a href="/shop/">printable food lists</a>.</p>

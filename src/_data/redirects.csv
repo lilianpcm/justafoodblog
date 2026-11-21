@@ -1,0 +1,6 @@
+# Mapa de redirecionamentos do blog antigo (blog de receitas, 2014–2021) para o site novo.
+# status: 301 = redireciona para new_path | 410 = página removida de vez | pending = ainda sem destino (dá 404)
+# Preencha new_path e troque "pending" por 301 quando existir uma página nova SOBRE O MESMO ASSUNTO.
+# Próximo passo (Lilian, 21/11): cruzar o relatório "Links" do Search Console com os URLs antigos do Wayback.
+old_path,new_path,status,note
+/simsim-balls-are-probably-the-simplest-dessert-from-uganda-to-prepare-and-heres-how-you-can-do-it/,/recipes/,301,"backlink da Grokipedia; destino decidido pela Lilian em 21/11"

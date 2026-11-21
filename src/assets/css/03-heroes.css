@@ -1,0 +1,30 @@
+/* Cabeçalho do grupo (página da categoria) e amostra EAT / LIMIT / AVOID.
+   Cores do food list conforme notas/branding_alimentos.md. Sem cantos arredondados. */
+.gh{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-block:var(--space-3);padding:var(--space-3) var(--space-4);background:color-mix(in srgb,var(--pill) 55%,#fff);border:1px solid color-mix(in srgb,var(--accent) 30%,#fff);border-left:6px solid var(--accent)}
+.gh__title{margin:10px 0 0;font-weight:900;font-size:clamp(28px,4.4vw,48px);line-height:1.05;letter-spacing:-.025em;color:var(--navy)}
+.gh__img{width:clamp(110px,18vw,200px);height:auto;mix-blend-mode:multiply;flex:none}
+.answer{font-size:1.15em;line-height:1.6;font-weight:500;padding:var(--space-2) 0 var(--space-2) var(--space-2);border-left:4px solid var(--accent);margin:var(--space-2) 0 var(--space-3)}
+
+.fl{margin-block:var(--space-4)}
+.fl h2{margin-bottom:var(--space-2)}
+.fl__cols{display:grid;gap:12px}
+@media (min-width:640px){.fl__cols{grid-template-columns:1.25fr 1fr 1fr}}
+.fl__col{border:3px solid var(--b);background:var(--bg)}
+.fl__col--eat{--band:#2F8A4C;--bg:#CDE6D1;--b:#1F6B39;--band-ink:#fff;--portion:#1F6B39}
+.fl__col--limit{--band:#F3C433;--bg:#F9E3A6;--b:#C9970F;--band-ink:#000;--portion:#8A5A00}
+.fl__col--avoid{--band:#C63A33;--bg:#F2C4BE;--b:#9E2A24;--band-ink:#fff;--portion:#9E2A24}
+.fl__head{margin:0;padding:10px 12px;background:var(--band);color:var(--band-ink);text-align:center}
+.fl__head span{display:block;font-weight:900;font-size:22px;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 3px rgba(0,0,0,.38)}
+.fl__col--limit .fl__head span{text-shadow:0 1px 1px rgba(0,0,0,.14)}
+.fl__head small{display:block;font-weight:600;font-size:13px;letter-spacing:0;opacity:.95}
+.fl__col ul{list-style:none;margin:0;padding:6px 12px 10px}
+.fl__col li{display:flex;align-items:center;gap:10px;margin:0;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.07);font-weight:600;font-size:16px;line-height:1.35;color:#000}
+.fl__col li:last-child{border-bottom:0}
+.fl__col li b{font-weight:700;font-size:.9em;color:var(--portion)}
+.fl__img{width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply;flex:none}
+.fl__note{font-size:15px;color:var(--ink-muted);margin-top:10px}
+.cta__more{margin:12px 0 0;font-weight:600}
+.xlinks{margin-block:var(--space-4)}
+.see-list{margin-block:var(--space-3)}
+.listing{display:flex;flex-direction:column;gap:12px;height:100%}
+.listing .product-card__actions{margin-top:auto}

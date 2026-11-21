@@ -1,0 +1,28 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ site.name }}
+
+> {{ site.description }}
+
+{{ site.name }} ({{ site.url }}) publishes free food lists for special diets: for each condition, a direct answer, a sample of foods to eat, limit (with portions) and avoid, the reasons by food group, and the sources behind it (government health institutes, national health services and medical societies). Complete printable versions (food list, food chart, grocery list, meal plan with recipes; PDF, A4 and US Letter) are sold by {{ site.shop_name }} on Etsy. General information, not medical advice.
+
+## Foods to eat and avoid, by condition
+{% for cat in catalog.catList %}{% if cat.indexable %}
+### [{{ cat.name }}]({{ site.url }}{{ cat.url }})
+{% for p in catalog.conditions %}{% if p.indexable and p.category == cat.key %}
+- [{{ p.title }}]({{ site.url }}{{ p.url }}): {{ p.answer }}{% endif %}{% endfor %}
+{% endif %}{% endfor %}
+{% set anyPost = false %}{% for p in catalog.posts %}{% if p.indexable %}{% set anyPost = true %}{% endif %}{% endfor %}
+{% if anyPost %}
+## Questions
+{% for p in catalog.posts %}{% if p.indexable %}
+- [{{ p.title }}]({{ site.url }}{{ p.url }}): {{ p.description }}{% endif %}{% endfor %}
+{% endif %}
+
+## About
+
+- [Editorial policy and sources]({{ site.url }}/editorial-policy/)
+- [Disclaimer]({{ site.url }}/disclaimer/)
+- [About]({{ site.url }}/about/)

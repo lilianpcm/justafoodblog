@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+{% if site.google_tag %}<script>
+// Google tag (Analytics) com consentimento: nada de cookie até a pessoa aceitar no aviso.
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var enC=null;try{enC=localStorage.getItem("jafb-consent")}catch(e){}
+gtag("consent","default",{analytics_storage:enC==="granted"?"granted":"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});
+gtag("js",new Date());
+</script>
+{% if site.google_tag.slice(0, 2) == "G-" %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_tag }}"></script>
+<script>gtag("config","{{ site.google_tag }}");</script>{% else %}<script async src="https://www.googletagmanager.com/gtm.js?id={{ site.google_tag }}"></script>{% endif %}{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ headTitle }}</title>
+<meta name="description" content="{{ metaDescription }}">
+{% if page.url and not is404 %}<link rel="canonical" href="{{ site.url }}{{ page.url }}">{% endif %}
+<meta name="robots" content="{{ 'index, follow, max-image-preview:large' if indexable else 'noindex, follow' }}">
+{% if site.verification.google %}<meta name="google-site-verification" content="{{ site.verification.google }}">{% endif %}
+{% if site.verification.bing %}<meta name="msvalidate.01" content="{{ site.verification.bing }}">{% endif %}
+{% if site.verification.pinterest %}<meta name="p:domain_verify" content="{{ site.verification.pinterest }}">{% endif %}
+<link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>{{ assets.css.content | safe }}</style>
+<script>document.documentElement.className="js"</script>
+<script src="/assets/js/site.{{ assets.js.hash }}.js" defer></script>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="/feed.xml">
+{% set isArticle = type == "condition" or type == "post" %}
+{% set shareImage = (site.url + shareUrl(og_image)) if og_image else (site.url + "/assets/brand/og-default.jpg") %}
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:type" content="{{ 'article' if isArticle else 'website' }}">
+<meta property="og:title" content="{{ seo_title or title or name or site.name }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ shareImage }}">
+<meta property="og:locale" content="en_US">
+{% if isArticle and date %}<meta property="article:published_time" content="{{ date | isoDate }}">
+<meta property="article:modified_time" content="{{ (updated or date) | isoDate }}">
+<meta property="article:author" content="{{ site.author }}">
+<meta property="article:section" content="{{ catalog.categories[catKey].name if catalog.categories[catKey] }}">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title or title or name or site.name }}">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<meta name="twitter:image" content="{{ shareImage }}">
+<meta name="pinterest-rich-pin" content="true">
+{% schema %}
+{{ site.analytics_html | safe }}
+</head>
+<body data-category="{{ catKey }}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap site-header__in">
+    <a class="brand" href="/" aria-label="{{ site.name }} by {{ site.shop_name }} — home">
+      <span class="brand__name">{{ site.name }}</span>
+      <span class="brand__by">by {{ img("brand/the-shop-curator-logo.png", "", { widths: [120, 240], sizes: "66px", eager: true }) | safe }}</span>
+    </a>
+    <div class="site-header__side">
+      <p class="site-header__tagline">{{ site.tagline }}</p>
+      {% include "partials/social.njk" %}
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">{{ icon("menu") | safe }} Menu</button>
+  </div>
+  <div class="menu">
+    <div class="wrap menu__in">
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul>
+          {% for cat in catalog.liveCats %}<li><a href="{{ cat.url }}"{% if page.url == cat.url %} aria-current="page"{% endif %}>{{ cat.short }}</a></li>{% endfor %}
+          {% if catalog.counts.recipes >= site.min_recipes_for_hub %}<li><a href="/recipes/"{% if page.url == "/recipes/" %} aria-current="page"{% endif %}>Recipes</a></li>{% endif %}
+          <li><a href="/shop/"{% if page.url == "/shop/" %} aria-current="page"{% endif %}>Shop</a></li>
+          <li><a href="/about/"{% if page.url == "/about/" %} aria-current="page"{% endif %}>About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <a class="site-footer__name" href="/">{{ site.name }}</a>
+    <p class="site-footer__by">by {{ img("brand/the-shop-curator-logo-reversed.png", "The Shop Curator", { widths: [180, 360], sizes: "150px", cls: "site-footer__logo" }) | safe }}</p>
+    <p>Shop all printables at <a href="{{ etsy('', 'site', 'footer') }}" rel="noopener" data-etsy="footer">theshopcurator.etsy.com</a></p>
+    {% include "partials/social.njk" %}
+    <nav aria-label="Footer">
+      <ul class="site-footer__links">
+        {% for cat in catalog.liveCats %}<li><a href="{{ cat.url }}">{{ cat.name }}</a></li>{% endfor %}
+        <li><a href="/recipes/">Recipes</a></li>
+        <li><a href="/shop/">Printables</a></li>
+        <li><a href="/free-printables/">Free printable</a></li>
+      </ul>
+      <ul class="site-footer__links">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/editorial-policy/">Editorial policy &amp; sources</a></li>
+        <li><a href="/disclaimer/">Disclaimer</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="site-footer__legal">
+      <p>{{ site.disclaimer_short }}</p>
+      <p>© {{ buildDate.getFullYear() }} {{ site.name }} by {{ site.shop_name }}</p>
+    </div>
+  </div>
+</footer>
+{% if site.google_tag %}<div class="consent" id="consent" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies for anonymous visit statistics. See our <a href="/privacy/">privacy policy</a>.</p>
+  <div class="consent__btns"><button type="button" class="btn btn--navy" data-consent="granted">Accept</button><button type="button" class="btn-ghost" data-consent="denied">Decline</button></div>
+</div>{% endif %}
+</body>
+</html>

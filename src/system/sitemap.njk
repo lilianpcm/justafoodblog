@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{%- for item in collections.all | sort(false, false, "url") %}
+{%- if item.data.indexable and item.url and item.url.slice(-1) == "/" %}
+  <url>
+    <loc>{{ site.url }}{{ item.url }}</loc>
+    {%- set mod = item.data.updated or item.data.date if item.data.type in ["condition", "post"] else null %}
+    {%- if mod %}
+    <lastmod>{{ mod | isoDate }}</lastmod>
+    {%- endif %}
+    {%- for src in item | sitemapImages %}
+    <image:image><image:loc>{{ site.url }}{{ src }}</image:loc></image:image>
+    {%- endfor %}
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

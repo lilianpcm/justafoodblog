@@ -1,0 +1,8 @@
+[
+  { "key": "reflux", "name": "Reflux & Heartburn", "short": "Reflux", "slug": "reflux-heartburn", "image": "groups/reflux.png" },
+  { "key": "gut", "name": "Gut & Digestion", "short": "Digestion", "slug": "gut-digestion", "image": "groups/gut.png" },
+  { "key": "metabolic", "name": "Blood Sugar & Heart", "short": "Blood Sugar & Heart", "slug": "blood-sugar-heart", "image": "groups/metabolic.png" },
+  { "key": "liver", "name": "Liver & Gallbladder", "short": "Liver", "slug": "liver-gallbladder", "image": "groups/liver.png" },
+  { "key": "kidney", "name": "Kidney & Bladder", "short": "Kidney", "slug": "kidney-bladder", "image": "groups/kidney.png" },
+  { "key": "nerves", "name": "Nerves, Skin & Allergies", "short": "Nerves & Skin", "slug": "nerves-skin-allergies", "image": "groups/nerves.png" }
+]

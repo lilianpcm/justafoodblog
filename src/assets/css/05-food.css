@@ -1,0 +1,37 @@
+/* Just A Food Blog: ajustes de marca sobre o tema do exercisenono (notas/branding_alimentos.md).
+   Só Inter (títulos 900), navy #213445, sem cantos arredondados (exceto círculos de número), cores suaves por grupo. */
+*{border-radius:0}
+.num{border-radius:50%!important}
+.brand__name,.site-footer__name,.side-about__name,.hcard__words,.brandline p{font-family:var(--font-sans);font-weight:900;letter-spacing:-.025em}
+.brand__name{font-size:46px}
+.site-footer__name{font-size:38px}
+.side-about__name{font-size:22px}
+.brandline p{text-transform:none;font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;line-height:1.12}
+.hcard__media{background:color-mix(in srgb,var(--pill) 55%,#fff)}
+.hcard__media img{mix-blend-mode:multiply;object-fit:contain;padding:18px}
+.hcard .pill{background:var(--pill);color:var(--pill-ink)}
+.hcard h2 a{color:var(--navy)}
+.hcard__date{color:var(--ink-muted)}
+.brandline__accent{color:#1E7F86}
+.brandline{border-color:#E4E7EB}
+.potw{background:color-mix(in srgb,var(--pill) 35%,#fff);border-color:color-mix(in srgb,var(--accent) 30%,#fff)}
+.potw__row img{mix-blend-mode:multiply}
+.card.side-about{background:#F4F6F8;border-color:#E4E7EB}
+.side-free{background:#fff;border:1px solid #E4E7EB}
+.side-free img{background:#fff!important;mix-blend-mode:multiply}
+.side-list li{border-left:4px solid var(--accent);padding-left:12px;margin-bottom:6px;border-bottom:0}
+.side-list .pill{background:var(--pill);color:var(--pill-ink)}
+.groups-h{font-size:22px;font-weight:800;margin:var(--space-5) 0 0}
+.groups{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:760px){.groups{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.groups{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.groups li{margin:0}
+.groups a{display:grid;grid-template-rows:auto 1fr;height:100%;text-decoration:none;border:1px solid color-mix(in srgb,var(--accent) 28%,#fff);background:color-mix(in srgb,var(--pill) 45%,#fff);color:var(--navy)}
+.groups a:hover{border-color:var(--accent)}
+.groups img{width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;mix-blend-mode:multiply;padding:10px}
+.groups span{display:block;padding:10px 12px 14px;font-weight:800;font-size:15px;line-height:1.25;border-top:3px solid var(--accent);background:#fff}
+.groups small{display:block;font-weight:600;font-size:12.5px;color:var(--ink-muted);margin-top:4px}
+.signup h2{font-weight:900;letter-spacing:-.02em;text-transform:none;font-size:clamp(28px,3.4vw,40px)}
+.pill--label{background:var(--pill);color:var(--pill-ink)}
+@media (max-width:639px){.brand__name{font-size:clamp(20px,6.2vw,34px)}}
+.cat-card__title{font-weight:900;letter-spacing:-.02em;text-transform:none;font-size:clamp(24px,3vw,32px)}

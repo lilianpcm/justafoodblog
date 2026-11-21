@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+---
+{# Post de pergunta ("Is coffee OK with GERD?"): resposta direta, texto, CTA, FAQ, fontes. Sempre ligado a uma página de condição. #}
+{% import "components.njk" as c %}
+{% set cat = catalog.categories[category] %}
+{% set cond = null %}
+{% for p in catalog.conditions %}{% if p.slug == condition %}{% set cond = p %}{% endif %}{% endfor %}
+{% set prod = catalog.products[cond.product] if cond else null %}
+{% set parts = content.split("<!--cta-->") %}
+{% include "partials/breadcrumbs.njk" %}
+<article>
+  <header class="prose page-head">
+    {{ c.catPill(cat) }}
+    <h1>{{ title }}</h1>
+    {% include "partials/meta.njk" %}
+  </header>
+  <div class="prose">
+    {% if answer %}<p class="answer">{{ answer }}</p>{% endif %}
+    <div class="content">
+{{ parts[0] | safe }}
+    </div>
+    {% if prod and parts.length > 1 %}{{ c.cta(prod, page.fileSlug, "cta-mid") }}{% endif %}
+    {% if parts.length > 1 %}
+    <div class="content">
+{{ parts[1] | safe }}
+    </div>
+    {% endif %}
+    {% if cond %}<p class="see-list"><a class="btn-ghost" href="{{ cond.url }}">{{ cond.title }} {{ icon("arrow-right") | safe }}</a></p>{% endif %}
+    {{ c.faq(faq) }}
+    {% if prod %}{{ c.cta(prod, page.fileSlug, "cta-final") }}{% endif %}
+    {{ c.sources(sources) }}
+    {{ c.disclaimer(safety_note) }}
+  </div>
+</article>

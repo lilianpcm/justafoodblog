@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+---
+{# Página de loja da condição: todos os formatos e bundles da condição, cada um com o seu link do Etsy (UTM). #}
+{% import "components.njk" as c %}
+{% set p = catalog.products[page.fileSlug] %}
+{% set cat = catalog.categories[category] %}
+{% include "partials/breadcrumbs.njk" %}
+<article>
+  <header class="prose page-head">
+    <span class="pill">Printable PDF · A4 + US Letter</span>
+    <h1>{{ title or name }}</h1>
+    <p class="promise">{{ description }}</p>
+    {{ c.byShop() }}
+  </header>
+  <div class="wrap section">
+    {{ img(cover, cover_alt, { widths: [480, 720, 1080, 1600], sizes: "(min-width: 1120px) 1120px, 92vw", eager: true, cls: "product-card__img" }) | safe }}
+  </div>
+  <section class="wrap section" aria-labelledby="formats-h">
+    <h2 id="formats-h">Choose your printable</h2>
+    <ul class="grid grid--3 listings" style="margin-top:var(--space-3)">
+      {% for l in listings %}
+      <li><article class="card listing" data-category="{{ category }}">
+        {% if l.image %}{{ img(l.image, l.alt or l.name, { widths: [320, 480, 720], sizes: "(min-width: 960px) 330px, (min-width: 640px) 45vw, 92vw", cls: "product-card__img" }) | safe }}{% endif %}
+        {% if l.badge %}<span class="pill" style="justify-self:start">{{ l.badge }}</span>{% endif %}
+        <h3>{{ l.name }}</h3>
+        <ul class="cta__ticks">{% for t in l.includes %}<li>{{ icon("check") | safe }} <span>{{ t }}</span></li>{% endfor %}</ul>
+        <p class="product-card__actions"><a class="btn" href="{{ etsy(l.etsy_url, page.fileSlug, 'listing-' + loop.index) }}" rel="noopener" data-etsy="listing-{{ loop.index }}">See it on Etsy {{ icon("arrow-right") | safe }}</a></p>
+      </article></li>
+      {% endfor %}
+    </ul>
+  </section>
+  <div class="prose">
+    <div class="content">
+{{ content | safe }}
+    </div>
+    {% set guides = [] %}
+    {% for cond in catalog.conditions %}{% if cond.product == page.fileSlug %}{% set _ = guides.push(cond) %}{% endif %}{% endfor %}
+    {% if guides.length %}
+    <h2 id="free-guide">Read the free guide first</h2>
+    <ul class="linklist">{% for g in guides %}<li><a href="{{ g.url }}">{{ g.title }}</a></li>{% endfor %}</ul>
+    {% endif %}
+    {{ c.faq(faq, "Questions about the files") }}
+    {{ c.disclaimer() }}
+  </div>
+</article>

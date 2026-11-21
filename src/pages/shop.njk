@@ -1,0 +1,21 @@
+---
+permalink: /shop/
+layout: layouts/base.njk
+crumb: "Printables"
+gate: products
+title: "Printable food lists for special diets"
+seo_title: "Printable Food Lists, Food Charts and Meal Plans (PDF)"
+description: "Printable food lists, food charts, grocery lists and 7-day meal plans with recipes for special diets. Instant PDF download, A4 and US Letter."
+---
+{% import "components.njk" as c %}
+{% include "partials/breadcrumbs.njk" %}
+<header class="prose page-head">
+  <h1>{{ title }}</h1>
+  <p class="promise">The complete eat, limit and avoid list for your diet, plus an illustrated food chart, a grocery list and a 7-day meal plan with recipes. Instant PDF download, print at home in A4 and US Letter.</p>
+</header>
+<div class="wrap section">
+  <ul class="grid grid--3">
+    {% for p in catalog.productList %}<li>{{ c.productCard(p, "shop") }}</li>{% endfor %}
+  </ul>
+  <p style="margin-top:var(--space-4)">Shop all printables at <a href="{{ etsy('', 'shop', 'text') }}" rel="noopener" data-etsy="text">theshopcurator.etsy.com</a>.</p>
+</div>

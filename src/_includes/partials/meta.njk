@@ -1,0 +1,5 @@
+<p class="meta">
+  {% if updated %}<span>Updated <time datetime="{{ updated | isoDate }}">{{ updated | longDate }}</time></span>{% elif date %}<span>Published <time datetime="{{ date | isoDate }}">{{ date | longDate }}</time></span>{% endif %}
+  {% if sources and sources.length %}<span><a href="#sources">{{ sources.length }} {{ "source" if sources.length == 1 else "sources" }}</a></span>{% endif %}
+  <span><a href="/editorial-policy/">How we make our food lists</a></span>
+</p>

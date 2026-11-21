@@ -1,0 +1,18 @@
+---
+permalink: /404.html
+layout: layouts/base.njk
+title: "Page not found"
+description: "This page does not exist. Find food lists for special diets here."
+noindex: true
+is404: true
+eleventyExcludeFromCollections: true
+---
+<div class="prose section">
+  <h1>We couldn't find that page</h1>
+  <p class="lede">The page may have moved. Here is where to go next:</p>
+  <ul class="linklist">
+    {% for cat in catalog.liveCats %}<li><a href="{{ cat.url }}">{{ cat.name }}</a></li>{% endfor %}
+    <li><a href="/shop/">Printables</a></li>
+    <li><a href="/">Home</a></li>
+  </ul>
+</div>

@@ -1,0 +1,47 @@
+{
+  "name": "Just A Food Blog",
+  "url": "https://www.justafoodblog.com",
+  "lang": "en-US",
+  "author": "Just A Food Blog Editorial Team",
+  "tagline": "What to eat, limit and avoid — condition by condition.",
+  "brand_line": "Eat, limit, avoid — made simple.",
+  "brand_line_accent": "made simple.",
+  "about_blurb": "Plain-English food lists for special diets: what to eat, what to limit and what to avoid, with the sources behind every page. Made by The Shop Curator.",
+  "description": "Clear food lists for special diets: what to eat, limit and avoid with GERD, IBS, diabetes, fatty liver and more, with sources on every page.",
+  "shop_name": "The Shop Curator",
+  "shop_url": "https://theshopcurator.etsy.com",
+  "social": {
+    "pinterest": ""
+  },
+  "utm": {
+    "source": "justafoodblog",
+    "medium": "blog"
+  },
+  "google_tag": "",
+  "contact_email": "hello@justafoodblog.com",
+  "disclaimer_short": "General information, not medical advice. Talk to your doctor or a registered dietitian before changing your diet.",
+  "min_conditions_per_category": 3,
+  "min_products_for_catalog": 3,
+  "min_recipes_for_hub": 6,
+  "verification": {
+    "google": "",
+    "bing": "",
+    "pinterest": ""
+  },
+  "analytics_html": "",
+  "home": {
+    "_sobre": "Blocos da home escolhidos à mão. Use o nome do arquivo (sem .md) das páginas de condição e da página de loja.",
+    "popular": [
+      "gerd-diet",
+      "silent-reflux-diet"
+    ],
+    "printable_of_the_week": "silent-reflux-printables",
+    "free_printable": {
+      "title": "7-Day Food & Symptom Diary + My Eat / Limit / Avoid List",
+      "summary": "Track what you eat and how you feel for a week, then build your own eat, limit and avoid list. Free printable PDF, A4 and US Letter, sent to your inbox.",
+      "url": "/free-printables/",
+      "image": "",
+      "form_action": "/api/free-printable.php"
+    }
+  }
+}

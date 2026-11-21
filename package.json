@@ -1,0 +1,18 @@
+{
+  "name": "justafoodblog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Just A Food Blog (justafoodblog.com) — site estático gerado com Eleventy",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "rascunhos": "DRAFTS=1 eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "gray-matter": "^4.0.3",
+    "lucide-static": "^1.73.0",
+    "sharp": "^0.35.5"
+  }
+}

@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Refinamento visual (proposta 18/11): mesma marca, traço mais leve.
+   Menos peso tipográfico, menos blocos chapados, mais respiro, linhas finas.
+   ========================================================================== */
+:root{--line:#E4E7EB}
+
+/* Tipografia: títulos em ExtraBold/Bold em vez de Black; rótulos mais discretos */
+h1,h2,h3,h4{font-weight:800;letter-spacing:-.015em}
+h3,h4{font-weight:700}
+.home-h1{font-weight:800;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;max-width:22ch}
+
+/* Cabeçalho mais leve */
+.site-header__tagline{font-weight:500;color:var(--ink-muted)}
+.social a,.social span{width:42px;height:42px;background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+.social a:hover{border-color:var(--navy)}
+.nav a{font-weight:700;font-size:13px;letter-spacing:.1em;border-radius:0;border-bottom:2px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{background:none;border-bottom-color:var(--navy)}
+
+/* Pílulas menores e mais finas */
+.pill{padding:4px 12px;font-size:12px;line-height:18px;font-weight:700;letter-spacing:.08em}
+.pill--label{font-size:11px;letter-spacing:.14em;padding:4px 12px}
+
+/* Cartões: linha fina em vez de sombra, mais respiro */
+.card{box-shadow:none;border:1px solid var(--line)}
+.hcard{transition:border-color .15s}
+.hcard:hover{border-color:#c9d0d7}
+.hcard__media{background:var(--paper-alt)}
+.hcard__words{font-size:32px;color:var(--navy);opacity:.9}
+.hcard__date{font-weight:600;letter-spacing:.04em;text-transform:none;font-size:14px}
+.hcard h2,.hcard h3{font-weight:700;font-size:clamp(20px,2.2vw,24px);line-height:1.25}
+.hcard__body{gap:10px;padding:28px}
+
+/* Frase da marca: sem caixa cinza, entre linhas finas, menor */
+.brandline{background:none;border-radius:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:var(--space-4) 0}
+.brandline p{font-size:clamp(26px,3.2vw,36px);letter-spacing:.01em}
+.brandline footer{font-weight:600;letter-spacing:.14em;font-size:12px;color:var(--ink-muted)}
+
+/* Printable da semana: fundo branco com linha fina */
+.potw{background:#fff;border:1px solid var(--line)}
+.potw>h2{font-weight:700;font-size:22px}
+.potw__row{background:var(--paper-alt)}
+.potw__text{font-weight:600}
+
+/* Card do printable grátis na barra lateral: claro em vez de bloco navy */
+.side-free{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.side-free__name{font-weight:700;font-size:19px;line-height:26px}
+.side-free__more{font-weight:700;font-size:16px;text-decoration:underline;text-underline-offset:4px}
+
+/* Números (Most popular) mais delicados */
+.num--sm{background:transparent;color:var(--navy);border:1.5px solid var(--line);font-weight:700}
+
+/* Botões um pouco menos pesados */
+.btn{font-weight:700}
+
+/* Cor com delicadeza (18/11): tons da categoria em vez de tudo branco e navy */
+.hcard__media{background:color-mix(in srgb,var(--pill) 30%,#fff)}
+.hcard .pill{background:var(--pill);color:var(--pill-ink)}
+.brandline__accent{color:#BF4545}
+.brandline{border-color:color-mix(in srgb,#BF4545 25%,#fff)}
+
+
+
+.side-free img{background:color-mix(in srgb,#8ECFB9 35%,#fff)!important}
+.potw{background:color-mix(in srgb,var(--pill) 12%,#fff);border-color:color-mix(in srgb,var(--pill) 45%,#fff)}
+.potw__row{background:#fff}
+.side-free img{mix-blend-mode:multiply}.side-free{background:color-mix(in srgb,#8ECFB9 22%,#fff)}
+
+.card.side-about{background:color-mix(in srgb,#ADD1DA 28%,#fff);border-color:color-mix(in srgb,#ADD1DA 60%,#fff)}

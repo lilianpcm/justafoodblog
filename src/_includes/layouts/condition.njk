@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+---
+{# Página de condição: "Foods to eat and avoid with <condição>".
+   Ordem aprovada (Lilian, 21/11): resposta direta -> amostra EAT/LIMIT/AVOID -> why por grupo de alimento (texto)
+   -> como usar (texto) -> CTA -> FAQ -> fontes + aviso curto. A linha <!--cta--> no texto marca onde entra a caixa do produto. #}
+{% import "components.njk" as c %}
+{% set cat = catalog.categories[category] %}
+{% set prod = catalog.products[product] %}
+{% set parts = content.split("<!--cta-->") %}
+{% include "partials/breadcrumbs.njk" %}
+<article>
+  <header class="prose page-head">
+    {{ c.catPill(cat) }}
+    <h1>{{ title }}</h1>
+    {% include "partials/meta.njk" %}
+  </header>
+  <div class="prose">
+    <p class="answer">{{ answer }}</p>
+    {{ c.sample(sample, sample_total, condition_name) }}
+    <div class="content">
+{{ parts[0] | safe }}
+    </div>
+    {% if parts.length > 1 %}
+    {{ c.cta(prod, page.fileSlug, "cta-mid", cta_heading) }}
+    <div class="content">
+{{ parts[1] | safe }}
+    </div>
+    {% endif %}
+
+    {{ c.faq(faq) }}
+    {{ c.cta(prod, page.fileSlug, "cta-final", cta_heading) }}
+
+    {% if exercise_links and exercise_links.length %}
+    <section class="xlinks" aria-labelledby="xlinks-h">
+      <h2 id="xlinks-h">Moving more with {{ condition_name }}</h2>
+      <p>Illustrated home exercise guides from our sister site, Exercise No No:</p>
+      <ul class="linklist">{% for x in exercise_links %}<li><a href="{{ x.url }}">{{ x.name }}</a></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+
+    {{ c.sources(sources) }}
+    {{ c.disclaimer(safety_note) }}
+  </div>
+
+  {% set others = [] %}
+  {% for p in catalog.conditions %}{% if p.slug != page.fileSlug and ((related and related.length and p.slug in related) or (not (related and related.length) and p.category == category)) and others.length < 3 %}{% set _ = others.push(p) %}{% endif %}{% endfor %}
+  {% set qs = [] %}
+  {% for p in catalog.posts %}{% if p.condition == page.fileSlug %}{% set _ = qs.push(p) %}{% endif %}{% endfor %}
+  {% if others.length or qs.length %}
+  <section class="band" aria-labelledby="related-h" style="margin-top:var(--space-5)">
+    <div class="wrap">
+      {% if qs.length %}
+      <h2 id="related-h">More about {{ condition_name }} and food</h2>
+      <ul class="grid grid--3" style="margin-top:var(--space-3)">{% for p in qs %}<li>{{ c.postCard(p) }}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if others.length %}
+      <h2 {% if not qs.length %}id="related-h"{% endif %} style="{% if qs.length %}margin-top:var(--space-4){% endif %}">Related food lists</h2>
+      <ul class="grid grid--3" style="margin-top:var(--space-3)">{% for p in others %}<li>{{ c.postCard(p) }}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if cat.status != "off" %}<p style="margin:var(--space-3) 0 0"><a class="btn-ghost" href="{{ cat.url }}">All {{ cat.name }} food lists {{ icon("arrow-right") | safe }}</a></p>{% endif %}
+    </div>
+  </section>
+  {% endif %}
+</article>

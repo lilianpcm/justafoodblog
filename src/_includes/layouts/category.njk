@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+---
+{% import "components.njk" as c %}
+{% set cat = catalog.categories[key] %}
+{% include "partials/breadcrumbs.njk" %}
+<article>
+  <div class="wrap">{{ c.hero(cat) }}</div>
+  <header class="prose page-head">
+    <h1>{{ title }}</h1>
+    <p class="promise">{{ intro }}</p>
+  </header>
+
+  <section class="wrap section" aria-labelledby="lists-h">
+    <h2 id="lists-h">Food lists in this group</h2>
+    <ul class="grid grid--3" style="margin-top:var(--space-3)">
+      {% for p in catalog.conditions %}{% if p.category == key %}<li>{{ c.postCard(p) }}</li>{% endif %}{% endfor %}
+    </ul>
+  </section>
+
+  <div class="prose">
+    {% if key_takeaways %}{{ c.takeaways(key_takeaways) }}{% endif %}
+    <div class="content">
+{{ content | safe }}
+    </div>
+    {{ c.faq(faq) }}
+    {{ c.sources(sources) }}
+    {{ c.disclaimer(safety_note) }}
+  </div>
+</article>

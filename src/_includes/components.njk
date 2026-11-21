@@ -1,0 +1,154 @@
+{# Componentes do site. Uso: {% import "components.njk" as c %} e depois {{ c.nome(...) }} #}
+
+{# ---------- pílulas e número ---------- #}
+{% macro catPill(cat, link=true) -%}
+{% if link and cat.status != "off" %}<a class="pill pill--label" href="{{ cat.url }}" data-category="{{ cat.key }}">{{ cat.name }}</a>{% else %}<span class="pill pill--label" data-category="{{ cat.key }}">{{ cat.name }}</span>{% endif %}
+{%- endmacro %}
+
+{% macro num(n, small=false) -%}<span class="num{% if small %} num--sm{% endif %}">{{ n | pad2 }}</span>{%- endmacro %}
+
+{# ---------- aviso de saúde ---------- #}
+{% macro disclaimer(text="") %}
+<aside class="disclaimer" aria-label="Health note">
+  {{ icon("shield-check") | safe }}
+  <p>{{ text or "This page is general information, not medical advice. Your doctor or a registered dietitian can tell you which foods fit your own case." }} <a href="/disclaimer/">Read the full disclaimer</a>.</p>
+</aside>
+{% endmacro %}
+
+{# ---------- key takeaways ---------- #}
+{% macro takeaways(items) %}
+<section class="takeaways" aria-labelledby="takeaways-h">
+  <h2 id="takeaways-h">Key takeaways</h2>
+  <ul>{% for t in items %}<li>{{ t }}</li>{% endfor %}</ul>
+</section>
+{% endmacro %}
+
+{# ---------- FAQ ---------- #}
+{% macro faq(items, heading="Frequently asked questions") %}
+{% if items and items.length %}
+<section class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">{{ heading }}</h2>
+  {% for f in items %}
+  <details>
+    <summary>{{ f.q }} {{ icon("chevron-down") | safe }}</summary>
+    <div><p>{{ f.a }}</p></div>
+  </details>
+  {% endfor %}
+</section>
+{% endif %}
+{% endmacro %}
+
+{# ---------- fontes ---------- #}
+{% macro sources(items) %}
+{% if items and items.length %}
+<section class="sources" id="sources" aria-labelledby="sources-h">
+  <h2 id="sources-h">Sources</h2>
+  <p>Every statement on this page is checked against the sources below: government health institutes, national health services and medical societies. See <a href="/editorial-policy/">how we make our food lists</a>.</p>
+  <ol>{% for s in items %}<li><a href="{{ s.url }}" rel="noopener">{{ s.name }}</a></li>{% endfor %}</ol>
+</section>
+{% endif %}
+{% endmacro %}
+
+{# ---------- linha "by The Shop Curator" ---------- #}
+{% macro byShop() -%}
+<p class="cta__by">by {{ img("brand/the-shop-curator-logo.png", "The Shop Curator", { widths: [180, 360], sizes: "90px" }) | safe }}</p>
+{%- endmacro %}
+
+{# ---------- caixa de CTA (página de loja da condição) ---------- #}
+{% macro cta(p, campaign, position, heading="") %}
+<aside class="cta" data-category="{{ p.category }}" aria-label="Printable version">
+  {{ img(p.cover, p.cover_alt, { widths: [240, 480, 720], sizes: "(min-width: 640px) 240px, 92vw", cls: "cta__img" }) | safe }}
+  <div>
+    <span class="pill">Printable PDF · A4 + US Letter</span>
+    <h2 class="cta__name">{{ heading or p.name }}</h2>
+    <ul class="cta__ticks">{% for t in p.includes %}<li>{{ icon("check") | safe }} <span>{{ t }}</span></li>{% endfor %}</ul>
+    <a class="btn" href="{{ etsy(p.etsy_url, campaign, position) }}" rel="noopener" data-etsy="{{ position }}">Get the full list on Etsy {{ icon("arrow-right") | safe }}</a>
+    {% if p.listings.length > 1 %}<p class="cta__more"><a href="{{ p.url }}">See all {{ p.condition_name }} printables</a></p>{% endif %}
+    {{ byShop() }}
+  </div>
+</aside>
+{% endmacro %}
+
+{# ---------- amostra EAT / LIMIT / AVOID (cores do food list) ---------- #}
+{% macro sample(s, total, conditionName) %}
+<section class="fl" aria-labelledby="fl-h">
+  <h2 id="fl-h">Foods to eat, limit and avoid with {{ conditionName }}: a sample</h2>
+  <div class="fl__cols">
+    {% for col in [["eat", "Eat", "Good everyday choices"], ["limit", "Limit", "Fine in the portion shown"], ["avoid", "Avoid", "Most likely to cause trouble"]] %}
+    <div class="fl__col fl__col--{{ col[0] }}">
+      <h3 class="fl__head"><span>{{ col[1] }}</span><small>{{ col[2] }}</small></h3>
+      <ul>
+        {% for f in s[col[0]] %}<li>{% if f.image %}{{ img(f.image, "", { widths: [80, 160], sizes: "40px", cls: "fl__img" }) | safe }}{% endif %}<span>{{ f.name }}{% if f.portion %}<b> · {{ f.portion }}</b>{% endif %}</span></li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+  {% if total %}<p class="fl__note">A sample of {{ s.eat.length + s.limit.length + s.avoid.length }} foods from our full {{ conditionName }} food list of {{ total }} foods.</p>{% endif %}
+</section>
+{% endmacro %}
+
+{# ---------- card de produto ---------- #}
+{% macro productCard(p, campaign) %}
+<article class="card product-card" data-category="{{ p.category }}">
+  {{ img(p.cover, p.cover_alt, { widths: [320, 480, 720], sizes: "(min-width: 960px) 330px, (min-width: 640px) 45vw, 92vw", cls: "product-card__img" }) | safe }}
+  <span class="pill" style="justify-self:start">{{ p.listings.length }} {{ "printable" if p.listings.length == 1 else "printables" }} · PDF</span>
+  <h3><a href="{{ p.url }}">{{ p.name }}</a></h3>
+  <p class="product-card__actions">
+    <a class="btn" href="{{ etsy(p.etsy_url, campaign, 'product-card') }}" rel="noopener" data-etsy="product-card">Get it on Etsy {{ icon("arrow-right") | safe }}</a>
+  </p>
+</article>
+{% endmacro %}
+
+{# ---------- card de página (condição ou post) ---------- #}
+{% macro postCard(p) %}
+{% set cat = catalog.categories[p.category] %}
+<article class="card post-card" data-category="{{ p.category }}">
+  <p style="margin:0">{{ catPill(cat, false) }}</p>
+  <h3><a href="{{ p.url }}">{{ p.title }}</a></h3>
+  <p>{{ p.description }}</p>
+  <a class="post-card__more" href="{{ p.url }}">{{ "See the food list" if p.answer else "Read the answer" }}<span class="vh">: {{ p.title }}</span> {{ icon("arrow-right") | safe }}</a>
+</article>
+{% endmacro %}
+
+{# ---------- card de categoria ---------- #}
+{% macro catCard(cat, linked=true) %}
+{% if linked %}<a class="card cat-card" href="{{ cat.url }}" data-category="{{ cat.key }}">{% else %}<div class="card cat-card" data-category="{{ cat.key }}">{% endif %}
+  <p class="cat-card__title">{{ cat.name }}</p>
+  <span class="cat-card__foot"><span class="pill">{{ cat.conditionCount }} {{ "food list" if cat.conditionCount == 1 else "food lists" }}</span> {{ icon("arrow-right") | safe }}</span>
+{% if linked %}</a>{% else %}</div>{% endif %}
+{% endmacro %}
+
+{# ---------- bloco de free printable (formulário = placeholder para serviço externo) ---------- #}
+{% macro freeForm(id, source) %}
+{% set fp = site.home.free_printable %}
+<form class="freebie__form" action="{{ fp.form_action }}" method="post" data-freebie novalidate>
+  <label class="vh" for="fp-email-{{ id }}">Your email</label>
+  <input id="fp-email-{{ id }}" type="email" name="email" required autocomplete="email" placeholder="Your email">
+  <input type="hidden" name="source" value="{{ source }}">
+  <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+  <button class="btn btn--navy" type="submit">Send me the printable</button>
+  <label class="freebie__consent"><input type="checkbox" name="consent" value="yes" required> <span>Email me this printable and occasional tips from {{ site.name }}. Unsubscribe anytime. <a href="/privacy/">Privacy policy</a>.</span></label>
+  <p class="freebie__msg" role="status" aria-live="polite"></p>
+</form>
+{% endmacro %}
+
+{% macro freebie(headingLevel = 2, source = "free-printables") %}
+{% set fp = site.home.free_printable %}
+<section class="freebie" aria-labelledby="freebie-h">
+  <span class="pill">Free printable</span>
+  <h{{ headingLevel }} id="freebie-h">{{ fp.title }}</h{{ headingLevel }}>
+  <p>{{ fp.summary }}</p>
+  {{ freeForm("main", source) }}
+</section>
+{% endmacro %}
+
+{# ---------- cabeçalho do grupo (página da categoria) ---------- #}
+{% macro hero(cat) %}
+<div class="gh" data-category="{{ cat.key }}">
+  <div class="gh__text">
+    <span class="pill pill--label">Food lists by condition</span>
+    <p class="gh__title">{{ cat.name }}</p>
+  </div>
+  {% if cat.image %}{{ img(cat.image, "", { widths: [240, 480], sizes: "200px", eager: true, cls: "gh__img" }) | safe }}{% endif %}
+</div>
+{% endmacro %}

@@ -1,0 +1,28 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<channel>
+  <title>{{ site.name | xml | safe }}</title>
+  <link>{{ site.url }}/</link>
+  <description>{{ site.description | xml | safe }}</description>
+  <language>en-us</language>
+  <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+  {%- for p in (catalog.conditions.concat(catalog.posts)) %}{% if p.indexable and loop.index <= 30 %}
+  {%- set pic = p.pin_image or p.og_image or p.card_image %}
+  <item>
+    <title>{{ p.title | xml | safe }}</title>
+    <link>{{ site.url }}{{ p.url }}</link>
+    <guid isPermaLink="true">{{ site.url }}{{ p.url }}</guid>
+    <pubDate>{{ (p.updated or p.date) | rfc822 }}</pubDate>
+    <description>{{ p.description | xml | safe }}</description>
+    {%- if pic %}
+    <enclosure url="{{ site.url }}{{ shareUrl(pic) }}" type="image/jpeg" length="0"/>
+    <media:content url="{{ site.url }}{{ shareUrl(pic) }}" medium="image"/>
+    {%- endif %}
+  </item>
+  {%- endif %}{% endfor %}
+</channel>
+</rss>

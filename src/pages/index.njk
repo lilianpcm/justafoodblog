@@ -1,0 +1,111 @@
+---
+permalink: /
+layout: layouts/base.njk
+type: home
+schema: home
+seo_title: "Foods to Eat, Limit and Avoid for Special Diets | Just A Food Blog"
+---
+{% import "components.njk" as c %}
+{# ---------------------------------------------------------------------------
+   HOME (layout aprovado pela Lilian em 21/11, prévia home_preview.html). O que aparece aqui:
+   - Cards: as páginas de condição mais recentes (até 6), com a frase da marca depois do 2º.
+   - Most popular, Printable of the week e card do free printable: src/_data/site.json > "home".
+   - Faixa "Find your food list": os grupos que já têm página de condição (no lugar da faixa do Pinterest, que entra depois).
+--------------------------------------------------------------------------- #}
+{% set potw = catalog.products[site.home.printable_of_the_week] %}
+{% set activeCats = [] %}
+{% for cat in catalog.catList %}{% if cat.conditionCount > 0 %}{% set _ = activeCats.push(cat) %}{% endif %}{% endfor %}
+
+<div class="wrap">
+  <div class="home-cols" style="margin-top:var(--space-4)">
+    <div class="home-main">
+      <h1 class="home-h1">Foods to eat, limit and avoid — clear lists for special diets</h1>
+      {% for p in catalog.conditions %}{% if loop.index <= 6 %}
+      {% set cat = catalog.categories[p.category] %}
+      <article class="card hcard" data-category="{{ p.category }}">
+        <a class="hcard__media" href="{{ p.url }}" tabindex="-1" aria-hidden="true">{{ img(p.card_image, "", { widths: [320, 480, 720], sizes: "(min-width: 960px) 350px, (min-width: 640px) 45vw, 92vw", eager: loop.first }) | safe }}</a>
+        <div class="hcard__body">
+          <p class="hcard__date">{% if p.updated %}Updated {% endif %}<time datetime="{{ (p.updated or p.date) | isoDate }}">{{ (p.updated or p.date) | longDate }}</time></p>
+          {{ c.catPill(cat) }}
+          <h2><a href="{{ p.url }}">{{ p.title }}</a></h2>
+        </div>
+      </article>
+      {% if loop.index == 2 or (loop.last and loop.index < 2) %}
+      <blockquote class="brandline">
+        {% set bl = site.brand_line.split(site.brand_line_accent) %}
+        <p>{{ bl[0] }}{% if bl.length > 1 %}<span class="brandline__accent">{{ site.brand_line_accent }}</span>{{ bl[1] }}{% endif %}</p>
+        <footer>— {{ site.name }}</footer>
+      </blockquote>
+      {% endif %}
+      {% endif %}{% endfor %}
+
+      {% if potw %}
+      <section class="potw" data-category="{{ potw.category }}" aria-labelledby="potw-h">
+        <span class="pill">Printable of the week</span>
+        <h2 id="potw-h">{{ potw.potw_name or potw.name }}</h2>
+        <div class="potw__row">
+          {{ img(potw.cover, potw.cover_alt, { widths: [96, 192, 320], sizes: "96px" }) | safe }}
+          <p class="potw__text">Printable PDF · A4 + US Letter<br><span class="muted">{{ site.shop_name }} on Etsy</span></p>
+          <a class="btn" href="{{ etsy(potw.etsy_url, 'home', 'printable-of-the-week') }}" rel="noopener" data-etsy="printable-of-the-week">Get it on Etsy {{ icon("arrow-right") | safe }}</a>
+        </div>
+      </section>
+      {% endif %}
+    </div>
+
+    <aside class="home-side" aria-label="About and more">
+      <section class="card side-block side-about" aria-labelledby="side-about-h">
+        <h2 id="side-about-h">About</h2>
+        <div class="side-about__top"><span class="side-about__name">{{ site.name }}</span></div>
+        <p>{{ site.about_blurb }}</p>
+        <p><a href="/editorial-policy/">How we make our food lists</a></p>
+      </section>
+
+      {% if activeCats.length %}
+      <section class="card side-block" aria-labelledby="side-cats-h">
+        <h2 id="side-cats-h">Browse by condition</h2>
+        <ul class="side-list">
+          {% for cat in activeCats %}<li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status != 'off' else '#' }}">{{ cat.name }} <span class="pill">{{ cat.conditionCount }}</span></a></li>{% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+
+      <a class="side-free" href="{{ site.home.free_printable.url }}">
+        {% if site.home.free_printable.image %}{{ img(site.home.free_printable.image, "", { widths: [300, 600], sizes: "(min-width: 960px) 300px, 92vw" }) | safe }}{% endif %}
+        <span class="side-free__body">
+          <span class="pill pill--plain">Free printable</span>
+          <span class="side-free__name">{{ site.home.free_printable.title }}</span>
+          <span class="side-free__more">Get it free {{ icon("arrow-right") | safe }}</span>
+        </span>
+      </a>
+
+      {% if site.home.popular.length %}
+      <section class="card side-block" aria-labelledby="side-pop-h">
+        <h2 id="side-pop-h">Most popular</h2>
+        <ol class="popular">
+          {% for slug in site.home.popular %}{% for p in catalog.conditions %}{% if p.slug == slug %}
+          <li data-category="{{ p.category }}"><a href="{{ p.url }}">{{ c.num(site.home.popular.indexOf(slug) + 1, true) }}<span><span class="popular__title">{{ p.title }}</span><span class="popular__date">Updated {{ (p.updated or p.date) | longDate }}</span></span></a></li>
+          {% endif %}{% endfor %}{% endfor %}
+        </ol>
+      </section>
+      {% endif %}
+    </aside>
+  </div>
+
+  {% if activeCats.length %}
+  <section aria-labelledby="groups-h">
+    <h2 id="groups-h" class="groups-h">Find your food list</h2>
+    <ul class="groups">
+      {% for cat in activeCats %}
+      {% set names = [] %}{% for p in catalog.conditions %}{% if p.category == cat.key and names.length < 4 %}{% set _ = names.push(p.condition_name) %}{% endif %}{% endfor %}
+      <li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status != 'off' else '#' }}">{{ img(cat.image, "", { widths: [240, 480], sizes: "(min-width: 1100px) 180px, 45vw" }) | safe }}<span>{{ cat.name }}<small>{{ names | join(", ") }}</small></span></a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section class="signup" aria-labelledby="signup-h">
+    <h2 id="signup-h">Get the free printable</h2>
+    <p>{{ site.home.free_printable.title }}: {{ site.home.free_printable.summary }}</p>
+    {{ c.freeForm("home", "home") }}
+  </section>
+</div>
