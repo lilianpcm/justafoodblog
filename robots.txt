@@ -1,0 +1,49 @@
+# Just A Food Blog — todos os robôs de busca e de IA são bem-vindos (decisão da Lilian, 21/11).
+# (As páginas incompletas usam a meta "noindex"; não bloqueie aqui, senão o robô não vê a meta.)
+
+User-agent: *
+Allow: /
+
+# Busca tradicional
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: Applebot
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+User-agent: Pinterestbot
+Allow: /
+
+# Busca das IAs (são estes que geram citação nas respostas)
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: DuckAssistBot
+Allow: /
+
+# Acesso em nome do usuário (quando alguém pede para a IA abrir a página)
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Treinamento de modelos
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.justafoodblog.com/sitemap.xml

@@ -1,0 +1,91 @@
+# Just A Food Blog — gerado automaticamente. NÃO edite este arquivo:
+# os redirecionamentos ficam em src/_data/redirects.csv e o resto em src/system/htaccess.njk.
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+AddCharset utf-8 .html .xml .txt .css .js .json
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType image/svg+xml .svg
+  AddType "application/xml; charset=utf-8" .xml
+  AddType "text/plain; charset=utf-8" .txt
+</IfModule>
+
+# O feed e um XML diferente do sitemap: tipo proprio, sempre em UTF-8
+<Files "feed.xml">
+  ForceType "application/rss+xml; charset=utf-8"
+</Files>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1) Sempre https e COM www (um único endereço: https://www.justafoodblog.com), com 301
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.justafoodblog.com%{REQUEST_URI} [R=301,L]
+
+
+  # 3) index.html na barra de endereço volta para a pasta
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+  RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L]
+
+  # 4) URLs antigas com destino definido em src/_data/redirects.csv
+  RewriteRule ^simsim-balls-are-probably-the-simplest-dessert-from-uganda-to-prepare-and-heres-how-you-can-do-it/?$ /recipes/ [R=301,L]
+
+  # 5) Feed do blog antigo (WordPress) -> feed novo (equivalente de verdade)
+  RewriteRule ^feed/?$ /feed.xml [R=301,L]
+
+  # 6) O restante dos padrões antigos (/category/receita/, /tag/algo/, /page/2/) NÃO é
+  #    redirecionado em massa: cai no 404 abaixo, que lista as categorias.
+  #    Mandar tudo para a home ou para uma categoria é tratado pelo Google como página
+  #    inexistente (soft 404) e a força dos links se perde do mesmo jeito.
+</IfModule>
+
+# Compressão (o LiteSpeed da Hostinger já comprime; isto cobre o Apache)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/rss+xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/xml application/rss+xml application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# Cache: arquivos com código no nome (CSS, JS, imagens) e fontes/vídeos guardam por 1 ano;
+# as páginas HTML são sempre conferidas de novo.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType application/rss+xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2|webp|jpe?g|gif|mp4|webm)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # Ligue a linha abaixo só depois de confirmar que o https (SSL) do domínio está funcionando:
+  # Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
