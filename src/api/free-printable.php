@@ -51,7 +51,7 @@ $html = '<!doctype html><html><body style="margin:0;background:#F2F4F6;font-fami
   . '<table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:0"><tr><td style="padding:32px">'
   . '<p style="margin:0 0 4px;font-size:13px;font-weight:bold;letter-spacing:2px">JUST A FOOD BLOG</p>'
   . '<h1 style="margin:0 0 16px;font-size:24px;line-height:30px">Your free printable is ready</h1>'
-  . '<p style="margin:0 0 20px;font-size:17px;line-height:26px">Here is <strong>7-Day Food &amp; Symptom Diary + My Eat / Limit / Avoid List</strong>: track what you eat and how you feel for a week, then build your own eat, limit and avoid list. Choose your paper size:</p>'
+  . '<p style="margin:0 0 20px;font-size:17px;line-height:26px">Here is your <strong>7-Day Food &amp; Symptom Diary + Grocery List</strong>: track what you eat and how you feel for one week, then plan your next shop with the 14-section grocery list. Choose your paper size:</p>'
   . '<p style="margin:0 0 14px">'
   . '<a href="' . $letter . '" style="display:inline-block;background:#A3352B;color:#ffffff;text-decoration:none;font-weight:bold;font-size:17px;padding:14px 24px;border-radius:0;margin:0 8px 10px 0">Download (US Letter)</a>'
   . '<a href="' . $a4 . '" style="display:inline-block;background:#A3352B;color:#ffffff;text-decoration:none;font-weight:bold;font-size:17px;padding:14px 24px;border-radius:0;margin:0 8px 10px 0">Download (A4)</a>'
@@ -60,7 +60,7 @@ $html = '<!doctype html><html><body style="margin:0;background:#F2F4F6;font-fami
   . '<p style="margin:0;font-size:13px;line-height:20px;color:#5B6878">General information, not medical advice. Talk to your doctor or a registered dietitian before changing your diet.<br>You received this email because you asked for this printable at justafoodblog.com. Reply to this email if you have any questions or no longer want to hear from us.</p>'
   . '</td></tr></table></td></tr></table></body></html>';
 
-$text = "Your free printable is ready\n\n7-Day Food & Symptom Diary + My Eat / Limit / Avoid List\n\nDownload (US Letter): $letter\nDownload (A4): $a4\n\n"
+$text = "Your free printable is ready\n\n7-Day Food & Symptom Diary + Grocery List\n\nDownload (US Letter): $letter\nDownload (A4): $a4\n\n"
   . "The links work for " . TOKEN_DAYS . " days.\nComplete food lists for your diet: " . SITE_URL . "/shop/\n\n"
   . "General information, not medical advice. Talk to your doctor or a registered dietitian before changing your diet.\n"
   . "You received this email because you asked for this printable at justafoodblog.com. Reply if you have questions or no longer want to hear from us.\n";
@@ -78,7 +78,7 @@ try {
     $m->setFrom($cfg['from_email'], $cfg['from_name']);
     $m->addReplyTo($cfg['from_email'], $cfg['from_name']);
     $m->addAddress($email);
-    $m->Subject = 'Your free printable: 7-Day Food & Symptom Diary';
+    $m->Subject = 'Your free printable: 7-Day Food & Symptom Diary + Grocery List';
     $m->isHTML(true);
     $m->Body    = $html;
     $m->AltBody = $text;

@@ -37,10 +37,10 @@
     ],
     "printable_of_the_week": "silent-reflux-printables",
     "free_printable": {
-      "title": "7-Day Food & Symptom Diary + My Eat / Limit / Avoid List",
-      "summary": "Track what you eat and how you feel for a week, then build your own eat, limit and avoid list. Free printable PDF, A4 and US Letter, sent to your inbox.",
+      "title": "7-Day Food & Symptom Diary + Grocery List",
+      "summary": "Track what you eat and how you feel for one week, then plan your next shop with a 14-section grocery list. Free printable PDF, A4 and US Letter, sent to your inbox.",
       "url": "/free-printables/",
-      "image": "",
+      "image": "free/food-symptom-diary-pages.png",
       "form_action": "/api/free-printable.php"
     }
   }

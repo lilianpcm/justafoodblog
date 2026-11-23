@@ -2,16 +2,17 @@
 permalink: /free-printables/
 layout: layouts/page.njk
 crumb: "Free printable"
-title: "[FREE PRINTABLE H1 — 7-Day Food & Symptom Diary]"
-seo_title: "Free Printable Food and Symptom Diary (PDF)"
-description: "Download a free printable 7-day food and symptom diary, plus a blank eat, limit and avoid list to build your own. A4 and US Letter."
+title: "Free 7-Day Food and Symptom Diary + Grocery List"
+seo_title: "Free Printable Food and Symptom Diary + Grocery List (PDF)"
+description: "Free printable 7-day food and symptom diary with a week-in-review page and a 14-section grocery list. PDF in A4 and US Letter, sent to your inbox."
 ---
 {% import "components.njk" as c %}
-<p>[INTRO — 1-2 sentences: what the diary is for and how to use it]</p>
+<p>Write down what you eat and drink, and how you feel after each meal, for one week. At the end of the week, the review page helps you spot patterns to discuss with your doctor or dietitian. Then plan your next shop with the grocery list.</p>
 <ul>
-  <li><strong>7-Day Food &amp; Symptom Diary:</strong> [WHAT EACH DAY HAS]</li>
-  <li><strong>My Eat / Limit / Avoid List:</strong> [WHAT THE BLANK LIST HAS]</li>
+  <li><strong>7 daily pages:</strong> a row for each meal and snack, with the time, what you ate and how much, how you felt after and a 0–3 rating. Plus sleep, stress, water, symptoms of the day and notes.</li>
+  <li><strong>Week in review:</strong> foods that felt fine, foods to watch, patterns you noticed and questions for your next visit.</li>
+  <li><strong>Grocery list:</strong> 2 pages with 14 sections in store order, from fruits and vegetables to frozen foods and household items, with checkboxes to fill in.</li>
 </ul>
-{% if site.home.free_printable.image %}{{ img(site.home.free_printable.image, "7-Day Food and Symptom Diary printable pages", { widths: [480, 800, 1200], sizes: "(min-width: 760px) 680px, 92vw" }) | safe }}{% endif %}
+{{ img(site.home.free_printable.image, "Pages of the 7-Day Food and Symptom Diary and Grocery List printable", { widths: [480, 800, 1200], sizes: "(min-width: 760px) 680px, 92vw" }) | safe }}
 {{ c.freebie() }}
-<p>Want the complete list for your diet? See our <a href="/shop/">printable food lists</a>.</p>
+<p>Want the complete food list for your diet? See our <a href="/shop/">printable food lists</a>.</p>
