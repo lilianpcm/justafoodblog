@@ -3,7 +3,7 @@ permalink: /about/
 layout: layouts/page.njk
 crumb: "About"
 title: "About Just A Food Blog"
-description: "Just A Food Blog shares clear food lists for special diets: what to eat, limit and avoid, condition by condition. Made by The Shop Curator."
+description: "Just A Food Blog shares clear food lists for special diets, written by pharmacist Lilian Porto and checked against health institutions."
 ---
 Just A Food Blog publishes clear food lists for special diets. For each condition, you get a direct answer, a sample of foods to eat, limit and avoid, the reasons behind each food group, and the sources we checked.
 
@@ -11,9 +11,16 @@ Just A Food Blog publishes clear food lists for special diets. For each conditio
 
 This domain once hosted a different recipe blog. Just A Food Blog is a new project under new ownership, with all-new content.
 
-## Who makes it
+## Who writes it
 
-Just A Food Blog is made by [The Shop Curator]({{ site.shop_url }}), a shop that creates printable food lists, food charts, grocery lists and meal plans for special diets.
+<div class="author-card" id="lilian-porto">
+{{ img(site.author_profile.photo, site.author_profile.name, { widths: [96, 192], sizes: "96px" }) | safe }}
+<div>
+<h2>{{ site.author_profile.name }}, {{ site.author_profile.title }}</h2>
+<p>{{ site.author_profile.bio }}</p>
+<p>Just A Food Blog is part of <a href="{{ site.shop_url }}">The Shop Curator</a>, a shop that creates printable food lists, food charts, grocery lists and meal plans for special diets.</p>
+</div>
+</div>
 
 ## What we do (and don't do)
 

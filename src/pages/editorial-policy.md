@@ -5,7 +5,7 @@ crumb: "Editorial policy"
 title: "Editorial policy and sources"
 description: "How Just A Food Blog builds its food lists: which sources we rely on, how every page is checked, and how we handle updates and corrections."
 ---
-Every food list on Just A Food Blog is built from published dietary guidance and checked before it goes live. This page explains how.
+Every food list on Just A Food Blog is built from published dietary guidance, written by pharmacist Lilian Porto and checked before it goes live. This page explains how.
 
 ## Where the information comes from
 
@@ -16,7 +16,8 @@ We rely on government health institutes, national health services, academic medi
 1. We collect the dietary guidance for the condition from the sources above.
 2. Each food is placed in one of three groups: **eat**, **limit** (with a portion) or **avoid**.
 3. When sources disagree or the evidence is weak, we choose the more cautious option.
-4. We use AI tools to help research and draft. Every list and every page is then cross-checked against the listed sources in a separate, independent review before it is published.
+4. We use AI tools to help research and draft. Every list and every page is then cross-checked against the listed sources in a separate, independent review.
+5. Pages are written and reviewed by [Lilian Porto](/about/#lilian-porto), a pharmacist (B.Pharm), before they are published.
 
 ## What we don't do
 

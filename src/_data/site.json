@@ -2,11 +2,11 @@
   "name": "Just A Food Blog",
   "url": "https://www.justafoodblog.com",
   "lang": "en-US",
-  "author": "Just A Food Blog Editorial Team",
+  "author": "Lilian Porto",
   "tagline": "What to eat, limit and avoid — condition by condition.",
   "brand_line": "Eat, limit, avoid — made simple.",
   "brand_line_accent": "made simple.",
-  "about_blurb": "Plain-English food lists for special diets: what to eat, what to limit and what to avoid, with the sources behind every page. Made by The Shop Curator.",
+  "about_blurb": "Plain-English food lists for special diets: what to eat, what to limit and what to avoid, with the sources behind every page. Written by pharmacist Lilian Porto.",
   "description": "Clear food lists for special diets: what to eat, limit and avoid with GERD, IBS, diabetes, fatty liver and more, with sources on every page.",
   "shop_name": "The Shop Curator",
   "shop_url": "https://theshopcurator.etsy.com",
@@ -43,5 +43,15 @@
       "image": "free/food-symptom-diary-pages.png",
       "form_action": "/api/free-printable.php"
     }
+  },
+  "author_profile": {
+    "_sobre": "Autora do site (decisao da Lilian, 23/11): nome, farmaceutica, foto do Thank you.",
+    "name": "Lilian Porto",
+    "title": "Pharmacist",
+    "credential": "B.Pharm",
+    "photo": "brand/lilian-porto.jpg",
+    "url": "/about/#lilian-porto",
+    "short_bio": "Lilian Porto is a pharmacist (B.Pharm) and the founder of The Shop Curator. She turns published dietary guidance into clear, printable food lists.",
+    "bio": "Lilian Porto is a pharmacist (Bachelor of Pharmacy, 2015). During her pharmacy residency in Brazil's public health system, she worked on patient access to high-cost medicines, which meant reading complex clinical requirements and explaining them clearly to patients and doctors. She founded The Shop Curator to do the same with diet: turn published guidance from health institutions into clear food lists that people can actually use in the kitchen and at the store."
   }
 }

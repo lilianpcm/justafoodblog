@@ -1,5 +1,10 @@
-<p class="meta">
-  {% if updated %}<span>Updated <time datetime="{{ updated | isoDate }}">{{ updated | longDate }}</time></span>{% elif date %}<span>Published <time datetime="{{ date | isoDate }}">{{ date | longDate }}</time></span>{% endif %}
-  {% if sources and sources.length %}<span><a href="#sources">{{ sources.length }} {{ "source" if sources.length == 1 else "sources" }}</a></span>{% endif %}
-  <span><a href="/editorial-policy/">How we make our food lists</a></span>
-</p>
+{% set au = site.author_profile %}
+<div class="byline">
+  <a class="byline__photo" href="{{ au.url }}">{{ img(au.photo, au.name, { widths: [96, 192], sizes: "48px", cls: "byline__img" }) | safe }}</a>
+  <p class="meta">
+    <span>By <a href="{{ au.url }}" rel="author">{{ au.name }}</a>, {{ au.title }}</span>
+    {% if updated %}<span>Updated <time datetime="{{ updated | isoDate }}">{{ updated | longDate }}</time></span>{% elif date %}<span>Published <time datetime="{{ date | isoDate }}">{{ date | longDate }}</time></span>{% endif %}
+    {% if sources and sources.length %}<span><a href="#sources">{{ sources.length }} {{ "source" if sources.length == 1 else "sources" }}</a></span>{% endif %}
+    <span><a href="/editorial-policy/">How we make our food lists</a></span>
+  </p>
+</div>

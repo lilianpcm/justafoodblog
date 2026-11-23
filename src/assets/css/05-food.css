@@ -44,3 +44,13 @@
 .pill--plain{background:var(--brand)}
 .num--sm{background:var(--brand);color:#fff}
 .social a,.social span{color:var(--brand)}
+/* Autora (Lilian Porto, 23/11): foto redonda é exceção de retrato */
+.byline{display:flex;align-items:center;gap:12px;margin-top:12px}
+.byline .meta{margin:0}
+.byline__img,.author-card img{border-radius:50%!important;width:48px;height:48px;object-fit:cover}
+.author-card{display:flex;gap:18px;align-items:flex-start;border:1px solid #E4E7EB;background:#F4F6F8;padding:18px;margin-block:var(--space-4)}
+.author-card img{width:96px;height:96px;flex:none}
+.author-card h2{margin:0 0 4px;font-size:22px}
+.author-card p{margin:0 0 8px}
+.author-mini{display:flex;gap:12px;align-items:center}.author-mini .byline__img{width:56px;height:56px}
+.author-mini .muted{font-size:14px;line-height:1.3}

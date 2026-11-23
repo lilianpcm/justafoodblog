@@ -55,7 +55,7 @@ seo_title: "Foods to Eat, Limit and Avoid for Special Diets | Just A Food Blog"
     <aside class="home-side" aria-label="About and more">
       <section class="card side-block side-about" aria-labelledby="side-about-h">
         <h2 id="side-about-h">About</h2>
-        <div class="side-about__top"><span class="side-about__name">{{ site.name }}</span></div>
+        <div class="side-about__top author-mini">{{ img(site.author_profile.photo, site.author_profile.name, { widths: [96, 192], sizes: "56px", cls: "byline__img" }) | safe }}<span><span class="side-about__name">{{ site.name }}</span><br><span class="muted">by {{ site.author_profile.name }}, {{ site.author_profile.title }}</span></span></div>
         <p>{{ site.about_blurb }}</p>
         <p><a href="/editorial-policy/">How we make our food lists</a></p>
       </section>
