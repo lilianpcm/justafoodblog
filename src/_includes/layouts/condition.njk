@@ -21,6 +21,7 @@ layout: layouts/base.njk
     <div class="content">
 {{ parts[0] | safe }}
     </div>
+    {% if meal_plan %}{{ c.weekPlan(meal_plan, condition_name, prod, meal_plan_photos, page.fileSlug) }}{% endif %}
     {% if parts.length > 1 %}
     {{ c.cta(prod, page.fileSlug, "cta-mid", cta_heading) }}
     <div class="content">

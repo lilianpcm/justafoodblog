@@ -152,3 +152,25 @@
   {% if cat.image %}{{ img(cat.image, "", { widths: [240, 480], sizes: "200px", eager: true, cls: "gh__img" }) | safe }}{% endif %}
 </div>
 {% endmacro %}
+
+{# ---------- cardapio de 7 dias (so nomes dos pratos; receitas e fotos ficam no produto) ---------- #}
+{% macro weekPlan(plan, conditionName, prod, photos, campaign) %}
+<section class="wp" aria-labelledby="wp-h">
+  <h2 id="wp-h">7-day {{ conditionName }} meal plan</h2>
+  <p>A sample week built only from foods on the eat list. Foods from the limit list appear in the portion shown.</p>
+  <div class="wp__scroll">
+  <table class="wp__table">
+    <thead><tr><th scope="col">Day</th><th scope="col" class="wp--b">Breakfast</th><th scope="col" class="wp--s">Snack</th><th scope="col" class="wp--l">Lunch</th><th scope="col" class="wp--s">Snack</th><th scope="col" class="wp--d">Dinner</th></tr></thead>
+    <tbody>
+    {% set labels = [["Breakfast","b"],["Snack","s"],["Lunch","l"],["Snack","s"],["Dinner","d"]] %}{% for day in plan %}<tr><th scope="row">Day {{ loop.index }}</th>{% for m in day %}<td data-label="{{ labels[loop.index0][0] }}" class="wp-c--{{ labels[loop.index0][1] }}">{{ m }}</td>{% endfor %}</tr>{% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% if prod %}
+  <div class="wp__more">
+    {% if photos and photos.length %}<div class="wp__photos">{% for ph in photos %}{{ img(ph, "", { widths: [160, 320], sizes: "120px" }) | safe }}{% endfor %}</div>{% endif %}
+    <p><strong>In the printable:</strong> all {{ plan.length * 5 }} meals with a photo and a step-by-step recipe, the plan as a one-page chart for the fridge, and a grocery list. <a href="{{ etsy(prod.etsy_url, campaign, 'meal-plan') }}" rel="noopener" data-etsy="meal-plan">See it on Etsy</a></p>
+  </div>
+  {% endif %}
+</section>
+{% endmacro %}

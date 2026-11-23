@@ -28,3 +28,27 @@
 .see-list{margin-block:var(--space-3)}
 .listing{display:flex;flex-direction:column;gap:12px;height:100%}
 .listing .product-card__actions{margin-top:auto}
+/* Cardápio de 7 dias (cores fixas das refeições) */
+.wp{margin-block:var(--space-4)}
+.wp__scroll{overflow-x:auto;margin-top:var(--space-2)}
+.wp__table{width:100%;min-width:640px;border-collapse:collapse;font-size:14.5px;line-height:1.35}
+.wp__table th,.wp__table td{border:1px solid #DDE2E7;padding:8px 10px;vertical-align:top;text-align:left}
+.wp__table thead th{color:#fff;font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;border-color:transparent}
+.wp__table thead th:first-child{background:var(--navy)}
+.wp--b{background:#D98C3F}.wp--s{background:#5F7FA0}.wp--l{background:#5E8B62}.wp--d{background:#A84E4E}
+.wp__table tbody th{white-space:nowrap;font-weight:800;color:var(--navy);background:#F4F6F8}
+.wp__table tbody tr:nth-child(even) td{background:#FAFBFC}
+.wp__more{display:flex;gap:16px;align-items:center;margin-top:14px;padding:14px;border:1px solid #E4E7EB;background:#F4F6F8}
+.wp__photos{display:flex;gap:6px;flex:none}
+.wp__photos img{width:72px;height:72px;object-fit:cover;background:#fff}
+.wp__more p{margin:0;font-size:15px}
+@media (max-width:639px){.wp__more{flex-direction:column;align-items:flex-start}}
+@media (max-width:639px){
+.wp__table{min-width:0}.wp__table thead{display:none}
+.wp__table,.wp__table tbody,.wp__table tr,.wp__table th,.wp__table td{display:block;width:100%}
+.wp__table tr{border:1px solid #DDE2E7;margin-bottom:12px}
+.wp__table tbody th{background:var(--navy);color:#fff;border:0}
+.wp__table td{border:0;border-top:1px solid #EEF1F4;display:grid;grid-template-columns:90px 1fr;gap:8px;background:#fff!important}
+.wp__table td::before{content:attr(data-label);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.wp-c--b::before{color:#B86E26}.wp-c--s::before{color:#5F7FA0}.wp-c--l::before{color:#5E8B62}.wp-c--d::before{color:#A84E4E}
+}
