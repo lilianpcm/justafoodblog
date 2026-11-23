@@ -2,7 +2,15 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
-
+<script>
+// Google tag (Analytics) com consentimento: nada de cookie até a pessoa aceitar no aviso.
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var enC=null;try{enC=localStorage.getItem("jafb-consent")}catch(e){}
+gtag("consent","default",{analytics_storage:enC==="granted"?"granted":"denied",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});
+gtag("js",new Date());
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQPJXG0P7D"></script>
+<script>gtag("config","G-EQPJXG0P7D");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Check your inbox | Just A Food Blog</title>
 <meta name="description" content="Your free printable is on its way.">
@@ -529,6 +537,9 @@ h3,h4{font-weight:700}
     </div>
   </div>
 </footer>
-
+<div class="consent" id="consent" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies for anonymous visit statistics. See our <a href="/privacy/">privacy policy</a>.</p>
+  <div class="consent__btns"><button type="button" class="btn btn--navy" data-consent="granted">Accept</button><button type="button" class="btn-ghost" data-consent="denied">Decline</button></div>
+</div>
 </body>
 </html>
