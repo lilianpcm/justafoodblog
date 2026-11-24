@@ -153,23 +153,24 @@
 </div>
 {% endmacro %}
 
-{# ---------- cardapio de 7 dias (so nomes dos pratos; receitas e fotos ficam no produto) ---------- #}
+{# ---------- 7 dias de LANCHES (decisao da Lilian, 23/11): semana completa de cafe/almoco/jantar ja foi vendida no formato
+     tabela, entao a pagina mostra so os 2 lanches de cada dia. Refeicoes principais, receitas e fotos = produto. ---------- #}
 {% macro weekPlan(plan, conditionName, prod, photos, campaign) %}
 <section class="wp" aria-labelledby="wp-h">
-  <h2 id="wp-h">7-day {{ conditionName }} meal plan</h2>
-  <p>A sample week built only from foods on the eat list. Foods from the limit list appear in the portion shown.</p>
+  <h2 id="wp-h">7-day {{ conditionName }} snack plan</h2>
+  <p>Two snacks a day for a full week, built only from foods on the eat list. Foods from the limit list appear in the portion shown.</p>
   <div class="wp__scroll">
-  <table class="wp__table">
-    <thead><tr><th scope="col">Day</th><th scope="col" class="wp--b">Breakfast</th><th scope="col" class="wp--s">Snack</th><th scope="col" class="wp--l">Lunch</th><th scope="col" class="wp--s">Snack</th><th scope="col" class="wp--d">Dinner</th></tr></thead>
+  <table class="wp__table wp__table--snacks">
+    <thead><tr><th scope="col">Day</th><th scope="col" class="wp--s">Morning snack</th><th scope="col" class="wp--s">Afternoon snack</th></tr></thead>
     <tbody>
-    {% set labels = [["Breakfast","b"],["Snack","s"],["Lunch","l"],["Snack","s"],["Dinner","d"]] %}{% for day in plan %}<tr><th scope="row">Day {{ loop.index }}</th>{% for m in day %}<td data-label="{{ labels[loop.index0][0] }}" class="wp-c--{{ labels[loop.index0][1] }}">{{ m }}</td>{% endfor %}</tr>{% endfor %}
+    {% for day in plan %}<tr><th scope="row">Day {{ loop.index }}</th><td data-label="Morning" class="wp-c--s">{{ day[1] }}</td><td data-label="Afternoon" class="wp-c--s">{{ day[3] }}</td></tr>{% endfor %}
     </tbody>
   </table>
   </div>
   {% if prod %}
   <div class="wp__more">
     {% if photos and photos.length %}<div class="wp__photos">{% for ph in photos %}{{ img(ph, "", { widths: [160, 320], sizes: "120px" }) | safe }}{% endfor %}</div>{% endif %}
-    <p><strong>In the printable:</strong> all {{ plan.length * 5 }} meals with a photo and a step-by-step recipe, the plan as a one-page chart for the fridge, and a grocery list. <a href="{{ etsy(prod.etsy_url, campaign, 'meal-plan') }}" rel="noopener" data-etsy="meal-plan">See it on Etsy</a></p>
+    <p><strong>Breakfast, lunch and dinner for all 7 days</strong> are in the printable meal plan, with a photo and a step-by-step recipe for all {{ plan.length * 5 }} meals, a one-page chart for the fridge and a grocery list. <a href="{{ etsy(prod.etsy_url, campaign, 'meal-plan') }}" rel="noopener" data-etsy="meal-plan">See it on Etsy</a></p>
   </div>
   {% endif %}
 </section>

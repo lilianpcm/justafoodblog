@@ -52,3 +52,4 @@
 .wp__table td::before{content:attr(data-label);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 .wp-c--b::before{color:#B86E26}.wp-c--s::before{color:#5F7FA0}.wp-c--l::before{color:#5E8B62}.wp-c--d::before{color:#A84E4E}
 }
+.wp__table--snacks{min-width:0}
