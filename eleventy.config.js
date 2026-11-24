@@ -36,6 +36,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addFilter("pad2", (n) => String(n).padStart(2, "0"));
   eleventyConfig.addFilter("xml", (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/[^\x00-\x7F]/gu, (c) => "&#" + c.codePointAt(0) + ";"));
   // ^ acentos e travessões viram códigos (&#8212;): o feed e o sitemap ficam certos mesmo se o servidor não avisar que o arquivo é UTF-8
+  eleventyConfig.addFilter("firstOfCategory", (list, key) => (list || []).find((x) => x.category === key) || {});
   eleventyConfig.addFilter("sitemapImages", (item) => {
     const d = item.data;
     const out = [];
@@ -47,7 +48,7 @@ export default async function (eleventyConfig) {
     return schemaFor(this.ctx);
   });
 
-  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts", "src/assets/brand": "assets/brand", "src/api": "api" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts", "src/assets/brand": "assets/brand", "src/api": "api", "src/free": "free" });
   eleventyConfig.addPassthroughCopy({ "src/assets/brand/favicon.ico": "favicon.ico" });
   eleventyConfig.addWatchTarget("src/assets/css/");
   eleventyConfig.addWatchTarget("src/assets/js/");

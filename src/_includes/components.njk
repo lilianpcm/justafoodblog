@@ -2,7 +2,7 @@
 
 {# ---------- pílulas e número ---------- #}
 {% macro catPill(cat, link=true) -%}
-{% if link and cat.status != "off" %}<a class="pill pill--label" href="{{ cat.url }}" data-category="{{ cat.key }}">{{ cat.name }}</a>{% else %}<span class="pill pill--label" data-category="{{ cat.key }}">{{ cat.name }}</span>{% endif %}
+{% if link and cat.status == "live" %}<a class="pill pill--label" href="{{ cat.url }}" data-category="{{ cat.key }}">{{ cat.name }}</a>{% else %}<span class="pill pill--label" data-category="{{ cat.key }}">{{ cat.name }}</span>{% endif %}
 {%- endmacro %}
 
 {% macro num(n, small=false) -%}<span class="num{% if small %} num--sm{% endif %}">{{ n | pad2 }}</span>{%- endmacro %}
@@ -72,7 +72,7 @@
 {# ---------- amostra EAT / LIMIT / AVOID (cores do food list) ---------- #}
 {% macro sample(s, total, conditionName) %}
 <section class="fl" aria-labelledby="fl-h">
-  <h2 id="fl-h">Foods to eat, limit and avoid with {{ conditionName }}: a sample</h2>
+  <h2 id="fl-h">Foods to eat, limit and avoid with {{ conditionName }}</h2>
   <div class="fl__cols">
     {% for col in [["eat", "Eat", "Good everyday choices"], ["limit", "Limit", "Fine in the portion shown"], ["avoid", "Avoid", "Most likely to cause trouble"]] %}
     <div class="fl__col fl__col--{{ col[0] }}">
@@ -83,7 +83,7 @@
     </div>
     {% endfor %}
   </div>
-  {% if total %}<p class="fl__note">A sample of {{ s.eat.length + s.limit.length + s.avoid.length }} foods from our full {{ conditionName }} food list of {{ total }} foods.</p>{% endif %}
+  {% if total %}<p class="fl__note">From our full {{ conditionName }} food list of {{ total }} foods.</p>{% endif %}
 </section>
 {% endmacro %}
 
@@ -155,7 +155,7 @@
 
 {# ---------- 7 dias de LANCHES (decisao da Lilian, 23/11): semana completa de cafe/almoco/jantar ja foi vendida no formato
      tabela, entao a pagina mostra so os 2 lanches de cada dia. Refeicoes principais, receitas e fotos = produto. ---------- #}
-{% macro weekPlan(plan, conditionName, prod, photos, campaign) %}
+{% macro weekPlan(plan, conditionName, prod, photos, campaign, mealPlanText) %}
 <section class="wp" aria-labelledby="wp-h">
   <h2 id="wp-h">7-day {{ conditionName }} snack plan</h2>
   <p>Two snacks a day for a full week, built only from foods on the eat list. Foods from the limit list appear in the portion shown.</p>
@@ -163,15 +163,27 @@
   <table class="wp__table wp__table--snacks">
     <thead><tr><th scope="col">Day</th><th scope="col" class="wp--s">Morning snack</th><th scope="col" class="wp--s">Afternoon snack</th></tr></thead>
     <tbody>
-    {% for day in plan %}<tr><th scope="row">Day {{ loop.index }}</th><td data-label="Morning" class="wp-c--s">{{ day[1] }}</td><td data-label="Afternoon" class="wp-c--s">{{ day[3] }}</td></tr>{% endfor %}
+    {% for day in plan %}<tr><th scope="row">Day {{ loop.index }}</th><td data-label="Morning" class="wp-c--s">{{ day[0] }}</td><td data-label="Afternoon" class="wp-c--s">{{ day[1] }}</td></tr>{% endfor %}
     </tbody>
   </table>
   </div>
   {% if prod %}
   <div class="wp__more">
     {% if photos and photos.length %}<div class="wp__photos">{% for ph in photos %}{{ img(ph, "", { widths: [160, 320], sizes: "120px" }) | safe }}{% endfor %}</div>{% endif %}
-    <p><strong>Breakfast, lunch and dinner for all 7 days</strong> are in the printable meal plan, with a photo and a step-by-step recipe for all {{ plan.length * 5 }} meals, a one-page chart for the fridge and a grocery list. <a href="{{ etsy(prod.etsy_url, campaign, 'meal-plan') }}" rel="noopener" data-etsy="meal-plan">See it on Etsy</a></p>
+    <p><strong>Breakfast, lunch and dinner for all 7 days</strong> are in the printable meal plan{{ mealPlanText }}. <a href="{{ etsy(prod.etsy_url, campaign, 'meal-plan') }}" rel="noopener" data-etsy="meal-plan">See it on Etsy</a></p>
   </div>
   {% endif %}
 </section>
+{% endmacro %}
+
+{# ---------- PDF gratuito aberto (amostra) ---------- #}
+{% macro freePdf(f, conditionName) %}
+<aside class="fpdf" aria-labelledby="fpdf-h">
+  {% if f.image %}{{ img(f.image, "Free printable " + conditionName + " food list, page preview", { widths: [240, 480], sizes: "160px", cls: "fpdf__img" }) | safe }}{% endif %}
+  <div>
+    <h2 id="fpdf-h">{{ f.title }}</h2>
+    <p>{{ f.text }}</p>
+    <p class="fpdf__btns"><a class="btn" href="{{ f.a4 }}" download data-free="a4">Download PDF (A4)</a> <a class="btn btn--navy" href="{{ f.letter }}" download data-free="letter">Download PDF (US Letter)</a></p>
+  </div>
+</aside>
 {% endmacro %}

@@ -18,10 +18,11 @@ layout: layouts/base.njk
   <div class="prose">
     <p class="answer">{{ answer }}</p>
     {{ c.sample(sample, sample_total, condition_name) }}
+    {% if free_pdf %}{{ c.freePdf(free_pdf, condition_name) }}{% endif %}
     <div class="content">
 {{ parts[0] | safe }}
     </div>
-    {% if meal_plan %}{{ c.weekPlan(meal_plan, condition_name, prod, meal_plan_photos, page.fileSlug) }}{% endif %}
+    {% if snack_plan %}{{ c.weekPlan(snack_plan, condition_name, prod, snack_photos, page.fileSlug, meal_plan_text) }}{% endif %}
     {% if parts.length > 1 %}
     {{ c.cta(prod, page.fileSlug, "cta-mid", cta_heading) }}
     <div class="content">
@@ -59,7 +60,7 @@ layout: layouts/base.njk
       <h2 {% if not qs.length %}id="related-h"{% endif %} style="{% if qs.length %}margin-top:var(--space-4){% endif %}">Related food lists</h2>
       <ul class="grid grid--3" style="margin-top:var(--space-3)">{% for p in others %}<li>{{ c.postCard(p) }}</li>{% endfor %}</ul>
       {% endif %}
-      {% if cat.status != "off" %}<p style="margin:var(--space-3) 0 0"><a class="btn-ghost" href="{{ cat.url }}">All {{ cat.name }} food lists {{ icon("arrow-right") | safe }}</a></p>{% endif %}
+      {% if cat.status == "live" %}<p style="margin:var(--space-3) 0 0"><a class="btn-ghost" href="{{ cat.url }}">All {{ cat.name }} food lists {{ icon("arrow-right") | safe }}</a></p>{% endif %}
     </div>
   </section>
   {% endif %}

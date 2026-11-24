@@ -53,3 +53,9 @@
 .wp-c--b::before{color:#B86E26}.wp-c--s::before{color:#5F7FA0}.wp-c--l::before{color:#5E8B62}.wp-c--d::before{color:#A84E4E}
 }
 .wp__table--snacks{min-width:0}
+.fpdf{display:flex;gap:18px;align-items:center;border:2px solid var(--accent);background:color-mix(in srgb,var(--pill) 35%,#fff);padding:16px;margin-block:var(--space-4)}
+.fpdf__img{width:150px;height:auto;flex:none;box-shadow:0 1px 4px rgba(0,0,0,.18);background:#fff}
+.fpdf h2{margin:0 0 6px;font-size:22px}
+.fpdf p{margin:0 0 10px}
+.fpdf__btns{display:flex;flex-wrap:wrap;gap:8px}
+@media (max-width:639px){.fpdf{flex-direction:column;align-items:flex-start}}

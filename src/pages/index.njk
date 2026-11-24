@@ -15,6 +15,7 @@ seo_title: "Foods to Eat, Limit and Avoid for Special Diets | Just A Food Blog"
 {% set potw = catalog.products[site.home.printable_of_the_week] %}
 {% set activeCats = [] %}
 {% for cat in catalog.catList %}{% if cat.conditionCount > 0 %}{% set _ = activeCats.push(cat) %}{% endif %}{% endfor %}
+{# grupo ainda sem hub publicado: o link vai para a 1a pagina de condicao do grupo #}
 
 <div class="wrap">
   <div class="home-cols" style="margin-top:var(--space-4)">
@@ -64,7 +65,7 @@ seo_title: "Foods to Eat, Limit and Avoid for Special Diets | Just A Food Blog"
       <section class="card side-block" aria-labelledby="side-cats-h">
         <h2 id="side-cats-h">Browse by condition</h2>
         <ul class="side-list">
-          {% for cat in activeCats %}<li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status != 'off' else '#' }}">{{ cat.name }} <span class="pill">{{ cat.conditionCount }}</span></a></li>{% endfor %}
+          {% for cat in activeCats %}<li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status == 'live' else (catalog.conditions | firstOfCategory(cat.key)).url }}">{{ cat.name }} <span class="pill">{{ cat.conditionCount }}</span></a></li>{% endfor %}
         </ul>
       </section>
       {% endif %}
@@ -97,7 +98,7 @@ seo_title: "Foods to Eat, Limit and Avoid for Special Diets | Just A Food Blog"
     <ul class="groups">
       {% for cat in activeCats %}
       {% set names = [] %}{% for p in catalog.conditions %}{% if p.category == cat.key and names.length < 4 %}{% set _ = names.push(p.condition_name) %}{% endif %}{% endfor %}
-      <li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status != 'off' else '#' }}">{{ img(cat.image, "", { widths: [240, 480], sizes: "(min-width: 1100px) 180px, 45vw" }) | safe }}<span>{{ cat.name }}<small>{{ names | join(", ") }}</small></span></a></li>
+      <li data-category="{{ cat.key }}"><a href="{{ cat.url if cat.status == 'live' else (catalog.conditions | firstOfCategory(cat.key)).url }}">{{ img(cat.image, "", { widths: [240, 480], sizes: "(min-width: 1100px) 180px, 45vw" }) | safe }}<span>{{ cat.name }}<small>{{ names | join(", ") }}</small></span></a></li>
       {% endfor %}
     </ul>
   </section>

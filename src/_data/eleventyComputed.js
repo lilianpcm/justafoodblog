@@ -39,7 +39,7 @@ export default {
     const here = (name) => ({ name, url: d.page.url });
     if (d.type === "condition") {
       const c = d.catalog.categories[d.category];
-      return [home, c.status !== "off" ? { name: c.name, url: c.url } : null, here(d.title)].filter(Boolean);
+      return [home, c.status === "live" ? { name: c.name, url: c.url } : null, here(d.title)].filter(Boolean);
     }
     if (d.type === "post") {
       const cond = d.catalog.conditions.find((p) => p.slug === d.condition);

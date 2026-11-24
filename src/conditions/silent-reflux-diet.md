@@ -1,4 +1,5 @@
 ---
+draft: true
 # Página de condição. Amostra (sample) = alimentos tirados da SELEÇÃO do pipeline (cache/selections), nunca de conhecimento geral.
 title: "Foods to Eat and Avoid with Silent Reflux (LPR)"
 seo_title: "[SEO TITLE — up to 60 characters, keyword first]"

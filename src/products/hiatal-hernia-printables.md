@@ -2,6 +2,7 @@
 # Página de loja da condição: todos os formatos e bundles, cada um com o link da listing no Etsy.
 # index: true só quando os links e as imagens forem os reais.
 index: false
+draft: true
 name: "Hiatal Hernia Printables"
 potw_name: "[PRINTABLE OF THE WEEK NAME]"
 condition_name: "Hiatal Hernia"

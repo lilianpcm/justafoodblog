@@ -3,6 +3,7 @@ export default {
   layout: "layouts/product.njk",
   type: "product",
   eleventyComputed: {
+    layout: (data) => (data.catalog?.products?.[data.page.fileSlug] ? data.layout : false),
     permalink: (data) => (data.catalog?.products?.[data.page.fileSlug] ? `/shop/${data.page.fileSlug}/` : false),
   },
 };
