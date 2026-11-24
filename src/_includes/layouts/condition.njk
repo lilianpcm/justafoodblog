@@ -17,12 +17,13 @@ layout: layouts/base.njk
   </header>
   <div class="prose">
     <p class="answer">{{ answer }}</p>
+    {% if safety_box %}<p class="safety" role="note"><strong>Important:</strong> {{ safety_box }}</p>{% endif %}
     {{ c.sample(sample, sample_total, condition_name) }}
     {% if free_pdf %}{{ c.freePdf(free_pdf, condition_name) }}{% endif %}
     <div class="content">
 {{ parts[0] | safe }}
     </div>
-    {% if snack_plan %}{{ c.weekPlan(snack_plan, condition_name, prod, snack_photos, page.fileSlug, meal_plan_text) }}{% endif %}
+    {% if snack_plan %}{{ c.weekPlan(snack_plan, condition_name, prod, snack_photos, page.fileSlug, meal_plan_text, snack_note) }}{% endif %}
     {% if parts.length > 1 %}
     {{ c.cta(prod, page.fileSlug, "cta-mid", cta_heading) }}
     <div class="content">

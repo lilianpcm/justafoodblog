@@ -40,7 +40,7 @@ sample:
     - { name: "Raw cabbage", image: "foods/cabbage.png" }
 free_pdf:
   title: "Free printable: diverticulitis food list + 7-day snack plan"
-  text: "A one-page PDF with the foods above, illustrated, and a week of flare-up friendly snacks. Print it for the fridge or take it to the store."
+  text: "A one-page PDF with the foods above, illustrated, and a week of snacks for the low-fiber recovery stage. Print it for the fridge or take it to the store."
   a4: "/free/diverticulitis-diet-food-list-a4.pdf"
   letter: "/free/diverticulitis-diet-food-list-us-letter.pdf"
   image: "free/diverticulitis-diet-food-list-preview.png"
@@ -54,19 +54,21 @@ snack_plan:
   - ["Apple Juice", "Cottage Cheese with Canned Pears"]
 snack_photos: ["meals/diverticulitis/08.jpg", "meals/diverticulitis/09.jpg", "meals/diverticulitis/11.jpg"]
 meal_plan_text: ", with a grocery list for the week"
+snack_note: "For the low-fiber stage, once your doctor says you can eat solid foods again: two snacks a day for a full week, built only from foods on the eat list."
+safety_box: "Diet supports your treatment; it does not replace it. If you think you are having a diverticulitis attack, contact your doctor. Call right away if you get a fever, your stomach pain gets worse or you can't keep clear liquids down."
 product: "diverticulitis-printables"
 cta_heading: "Diverticulitis Flare-Up Bundle 3-in-1"
 faq:
   - q: "What should I eat during a diverticulitis flare-up?"
-    a: "For mild symptoms treated at home, a doctor may suggest clear liquids such as broth and pulp-free juice for a few days. As you feel better, you add low-fiber foods: white rice, white bread, eggs, skinless poultry, fish, low-fat dairy, canned or peeled fruit and well-cooked vegetables without skins or seeds."
+    a: "For mild symptoms treated at home, a doctor may suggest clear liquids such as broth and pulp-free juice for a few days. As you feel better, you add low-fiber foods: white rice, white bread, eggs, skinless poultry, fish, milk or yogurt if tolerated, canned or peeled fruit and well-cooked vegetables without skins or seeds."
   - q: "How long should I stay on a low-fiber diet?"
-    a: "Only until your symptoms improve. Mayo Clinic notes that people with mild diverticulitis may feel better within 2 to 3 days of starting a clear liquid or low-fiber diet. After that, fiber is added back slowly over a few weeks. Ask your doctor when to start."
+    a: "Only while your symptoms settle. Mayo Clinic notes that people with mild diverticulitis may feel better within 2 to 3 days of starting a clear liquid or low-fiber diet, as part of their overall care. Move from liquids to low-fiber foods, and then back to fiber over a few weeks, as your symptoms allow and your doctor advises. If you are not improving, call your doctor."
   - q: "Can I eat nuts and seeds with diverticulitis?"
     a: "Yes, once you have recovered. The old advice to avoid them is not supported by research: in a study of more than 47,000 men, eating nuts or popcorn did not raise the risk of diverticulitis. Our flare-up list puts them in the avoid column only because they are high in fiber, not because they get stuck."
   - q: "Is a low FODMAP diet good for diverticulitis?"
     a: "There is no strong evidence that a low FODMAP diet prevents diverticulitis. Monash University, which developed the diet, says it may be worth trying only for IBS-like symptoms, with a FODMAP-trained dietitian."
   - q: "Should I eat more fiber after a diverticulitis flare-up?"
-    a: "Yes. Once you have recovered, a high-fiber diet is recommended. The NIDDK cites 14 grams of fiber per 1,000 calories, which is 28 grams a day on a 2,000-calorie diet. Increase it gradually and drink plenty of water."
+    a: "Yes. Once you have recovered, a high-fiber diet is recommended. The NIDDK cites the Dietary Guidelines for Americans: 14 grams of fiber per 1,000 calories, which is 28 grams a day on a 2,000-calorie diet. Increase it gradually, drink plenty of water and follow your doctor's target if you have one."
 sources:
   - name: "NIDDK (National Institutes of Health): Eating, Diet, & Nutrition for Diverticular Disease"
     url: "https://www.niddk.nih.gov/health-information/digestive-diseases/diverticulosis-diverticulitis/eating-diet-nutrition"
@@ -88,17 +90,17 @@ sources:
 
 ## The three stages of a diverticulitis diet
 
-A diverticulitis diet is not one fixed menu. What you eat changes with how you feel, and Mayo Clinic describes it as an eating plan that adjusts to whether you are in a flare-up, recovering or preventing the next one.
+A diverticulitis diet is not one fixed menu. What you eat changes with how you feel: Mayo Clinic explains that it depends on whether you are in a flare-up, recovering, or eating to help prevent another one.
 
-1. **Clear liquids, for a few days.** For mild symptoms treated at home, your doctor may suggest clear foods and liquids only: broth, pulp-free juice, gelatin, ice pops without fruit bits. Cleveland Clinic notes that this step is used mostly for more severe flare-ups. A clear liquid diet is short term: it does not give your body enough fiber or nutrients to follow for long.
+1. **Clear liquids, for a few days.** For mild symptoms treated at home, your doctor may suggest clear foods and liquids only: broth, pulp-free juice, gelatin, ice pops without fruit bits. The AGA's 2021 clinical update for doctors advises clear liquids during an uncomplicated attack for comfort. Cleveland Clinic notes that milder flare-ups may start directly with low-fiber foods. A clear liquid diet is short term: Mayo Clinic advises against staying on it for more than a few days unless your doctor says so, because it does not give your body enough calories, protein and other nutrients.
 2. **Low-fiber foods as you recover.** As you start feeling better, you slowly add low-fiber foods. This is the stage our food list covers. Mayo Clinic suggests about 1 to 2 ounces of protein at each meal, with another low-fiber food, and plenty of water. With mild diverticulitis, many people feel better within 2 to 3 days. If you don't, call your doctor.
-3. **High fiber, for the long term.** Once you have recovered, the goal flips. Research suggests that a low-fiber diet high in red meat may raise the risk of diverticulitis, and the NIDDK recommends 14 grams of fiber per 1,000 calories, or 28 grams a day on a 2,000-calorie diet. Add fiber back slowly, over a few weeks.
+3. **High fiber, for the long term.** Once you have recovered, the goal flips. Research suggests that a low-fiber diet high in red meat may raise the risk of diverticulitis, and the NIDDK cites the Dietary Guidelines recommendation of 14 grams of fiber per 1,000 calories, or 28 grams a day on a 2,000-calorie diet. Add fiber back slowly, over a few weeks.
 
-The diet during an attack is based on limited research: the AGA's 2021 clinical update for doctors focuses on fiber, activity and a healthy weight to prevent future episodes. That is why the low-fiber stage is temporary and guided by your doctor.
+Keep in mind that the evidence for restricting food during an attack is limited. The low-fiber stage is about comfort while symptoms settle; it does not treat the inflammation itself. For the long term, the AGA update recommends a high-quality diet, a healthy weight, physical activity and not smoking to lower the risk of another episode.
 
 ## Why these foods are on each list
 
-Our flare-up list sorts foods by how much fiber and roughage they carry, and by how easy they are to digest while your colon heals.
+Our flare-up list sorts foods by how much fiber and roughage they carry, so you can keep fiber low while symptoms settle.
 
 - **Grains and starches.** Refined grains such as white bread, white rice, cream of rice, plain bagels and mashed potato are on the eat side. Small portions of quinoa or wheat crackers sit on the limit side. Bran cereal, granola and seeded crackers wait until you recover.
 - **Fruit.** Canned fruit, applesauce, ripe banana and peeled, soft fruit are easier to digest than whole fruit with skin. Berries are limited to a small portion because of their seeds and fiber.
@@ -119,6 +121,6 @@ So why are almonds and chia seeds on our avoid list? Only because the list is fo
 ## How to use the lists day to day
 
 - **Build meals from the eat column.** A low-fiber plate during recovery is usually a soft protein (eggs, chicken, fish), a refined starch (white rice, pasta, mashed potato) and a cooked, peeled vegetable.
-- **Use limit foods in the portion shown.** The portion next to each limit food is the amount that fits a low-fiber day, not a daily target.
+- **Use limit foods in the portion shown.** The portion next to each limit food is the most our list includes in a low-fiber day. These are practical amounts, not official limits, so check labels and follow your doctor's advice.
 - **Add fiber back slowly.** When your doctor says it is time, move foods from the limit and avoid columns back in one at a time, over a few weeks, and drink more water as you do.
 - **Keep track of how you feel.** A simple food and symptom diary helps you and your doctor see what works for you. You can [download ours for free](/free-printables/).

@@ -155,10 +155,10 @@
 
 {# ---------- 7 dias de LANCHES (decisao da Lilian, 23/11): semana completa de cafe/almoco/jantar ja foi vendida no formato
      tabela, entao a pagina mostra so os 2 lanches de cada dia. Refeicoes principais, receitas e fotos = produto. ---------- #}
-{% macro weekPlan(plan, conditionName, prod, photos, campaign, mealPlanText) %}
+{% macro weekPlan(plan, conditionName, prod, photos, campaign, mealPlanText, note) %}
 <section class="wp" aria-labelledby="wp-h">
   <h2 id="wp-h">7-day {{ conditionName }} snack plan</h2>
-  <p>Two snacks a day for a full week, built only from foods on the eat list. Foods from the limit list appear in the portion shown.</p>
+  <p>{{ note or "Two snacks a day for a full week, built only from foods on the eat list." }}</p>
   <div class="wp__scroll">
   <table class="wp__table wp__table--snacks">
     <thead><tr><th scope="col">Day</th><th scope="col" class="wp--s">Morning snack</th><th scope="col" class="wp--s">Afternoon snack</th></tr></thead>
